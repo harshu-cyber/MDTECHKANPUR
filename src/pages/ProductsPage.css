@@ -1,0 +1,509 @@
+.products-page-wrapper {
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   Products Hero Section
+   ========================================== */
+
+.products-hero {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  padding: 5.5rem 0 4.5rem;
+  text-align: center;
+}
+
+.products-hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.products-hero-desc {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-lg);
+  padding: 0.9rem 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.clear-search-btn {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.clear-search-btn:hover {
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   Filter Chips
+   ========================================== */
+
+.products-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.filter-chip {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  padding: 0.55rem 1.35rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-chip:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.filter-chip.active {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(30, 78, 216, 0.25);
+}
+
+.result-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.result-count strong {
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   Products Full Grid Cards
+   ========================================== */
+
+.products-full-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.product-full-card {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex;
+  border: 1px solid var(--border-primary);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.product-full-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-color-bar {
+  width: 7px;
+  flex-shrink: 0;
+}
+
+.product-full-body {
+  padding: 2.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.product-full-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.product-full-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.product-full-name {
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.product-full-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.view-spec-btn {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.4rem;
+  align-self: flex-start;
+}
+
+.product-full-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Mini Spec Grid (4-column property preview) */
+.mini-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+  padding: 1.5rem;
+  border: 1px solid var(--border-primary);
+}
+
+.mini-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.mini-spec-key {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mini-spec-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Application Pills Row */
+.applications-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.app-pill {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-secondary);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.more-pill {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+}
+
+/* Card Actions Footer */
+.product-full-actions {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.inquiry-btn, .tds-btn {
+  font-size: 0.9rem;
+  padding: 0.7rem 1.75rem;
+}
+
+/* ==========================================
+   Technical Specification Modal
+   ========================================== */
+
+.spec-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spec-modal {
+  width: 100%;
+  max-width: 780px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: var(--border-radius-xl);
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-primary) !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 2.25rem 2.5rem;
+  border-bottom: 1px solid var(--border-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  background: var(--bg-secondary);
+  z-index: 1;
+}
+
+.modal-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.modal-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  color: var(--text-muted);
+  padding: 0.4rem;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.modal-body {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.modal-full-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.modal-section-heading {
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: -0.75rem;
+}
+
+/* Spec Table Grid */
+.spec-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+.spec-table-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.spec-table-row:last-child {
+  border-bottom: none;
+}
+
+.spec-table-row:nth-child(even) {
+  background: var(--bg-tertiary);
+}
+
+.spec-table-key {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.spec-table-val {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Application List */
+.modal-app-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-app-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.app-check {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+/* Benefits List */
+.modal-benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.benefit-bullet {
+  color: var(--accent-secondary);
+  font-size: 0.75rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.modal-cta-bar {
+  border-top: 1px solid var(--border-primary);
+  padding-top: 2rem;
+}
+
+.modal-cta-btn {
+  width: 100%;
+}
+
+/* ==========================================
+   Responsive Overrides
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .mini-spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .products-hero-title {
+    font-size: 2.5rem;
+  }
+  .product-full-header {
+    flex-direction: column;
+  }
+  .product-full-actions {
+    flex-direction: column;
+  }
+  .product-color-bar {
+    width: 100%;
+    height: 6px;
+  }
+  .product-full-card {
+    flex-direction: column;
+  }
+  .product-full-body {
+    padding: 1.75rem;
+  }
+  .mini-spec-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modal-header {
+    padding: 1.5rem;
+  }
+  .modal-body {
+    padding: 1.5rem;
+  }
+}

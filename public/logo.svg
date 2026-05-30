@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <defs>
+    <!-- Premium Gradients -->
+    <linearGradient id="polymerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" /> <!-- Vibrant Blue -->
+      <stop offset="50%" stop-color="#1d4ed8" /> <!-- Deep Blue -->
+      <stop offset="100%" stop-color="#0f172a" /> <!-- Dark Steel -->
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" /> <!-- Premium Amber/Gold -->
+      <stop offset="100%" stop-color="#d97706" /> <!-- Deep Gold -->
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc" /> <!-- Pure White Slate -->
+      <stop offset="100%" stop-color="#cbd5e1" /> <!-- Light Silver -->
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Industrial Icon / Polymer Symbol -->
+  <g transform="translate(10, 10)">
+    <!-- Polymer Capsule Outer Ring -->
+    <circle cx="50" cy="50" r="44" fill="none" stroke="url(#polymerGrad)" stroke-width="4" opacity="0.4" />
+    
+    <!-- Rotating Polymer Pellets/Extrusion Nodes -->
+    <circle cx="50" cy="14" r="7" fill="url(#accentGrad)" filter="url(#glow)" />
+    <circle cx="82" cy="32" r="6" fill="url(#polymerGrad)" />
+    <circle cx="82" cy="68" r="6" fill="url(#polymerGrad)" />
+    <circle cx="50" cy="86" r="7" fill="url(#accentGrad)" filter="url(#glow)" />
+    <circle cx="18" cy="68" r="6" fill="url(#polymerGrad)" />
+    <circle cx="18" cy="32" r="6" fill="url(#polymerGrad)" />
+    
+    <!-- Central Technical Mesh / Extruder Screw Section -->
+    <path d="M 40,40 L 60,40 L 65,50 L 35,50 Z" fill="url(#polymerGrad)" opacity="0.9" />
+    <path d="M 35,52 L 65,52 L 60,62 L 40,62 Z" fill="url(#polymerGrad)" opacity="0.9" />
+    <circle cx="50" cy="51" r="10" fill="url(#accentGrad)" />
+    
+    <!-- Molecular Bonds (Connecting lines) -->
+    <line x1="50" y1="14" x2="50" y2="41" stroke="#3b82f6" stroke-width="2" opacity="0.7" />
+    <line x1="50" y1="86" x2="50" y2="61" stroke="#3b82f6" stroke-width="2" opacity="0.7" />
+    <line x1="18" y1="32" x2="40" y2="51" stroke="#3b82f6" stroke-width="1.5" opacity="0.5" />
+    <line x1="82" y1="68" x2="60" y2="51" stroke="#3b82f6" stroke-width="1.5" opacity="0.5" />
+  </g>
+
+  <!-- Typography Section -->
+  <g transform="translate(120, 0)">
+    <!-- MD Text -->
+    <text x="0" y="65" font-family="'Inter', 'Outfit', 'Segoe UI', sans-serif" font-weight="900" font-size="44" fill="url(#accentGrad)" letter-spacing="2">MD</text>
+    
+    <!-- TECH Text -->
+    <text x="75" y="65" font-family="'Inter', 'Outfit', 'Segoe UI', sans-serif" font-weight="800" font-size="44" fill="url(#textGrad)" letter-spacing="1">TECH</text>
+    
+    <!-- Tagline / Subtitle -->
+    <text x="2" y="92" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="600" font-size="14" fill="#64748b" letter-spacing="7">KANPUR</text>
+    
+    <!-- B2B Descriptor badge -->
+    <rect x="100" y="78" width="165" height="18" rx="4" fill="#1e293b" opacity="0.8" />
+    <text x="106" y="91" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#94a3b8" letter-spacing="1.5">ADVANCED MASTERBATCHES</text>
+  </g>
+</svg>

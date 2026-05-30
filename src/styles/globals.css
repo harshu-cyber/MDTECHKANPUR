@@ -1,0 +1,361 @@
+/* Import Premium Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================
+   CSS Design Tokens & Core Theme Systems
+   ========================================== */
+
+:root {
+  /* Fonts */
+  --font-heading: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Common Theme Independent Constants */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --max-width: 1400px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-xl: 32px;
+  
+  /* B2B Masterbatch Color Accent Identifiers */
+  --color-white-mb: #f8fafc;
+  --color-black-mb: #0f172a;
+  --color-color-mb: #ef4444;
+  --color-additive-mb: #06b6d4;
+  --color-filler-mb: #f59e0b;
+  
+  /* Theme Settings: LIGHT MODE (Default) */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.9);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+  
+  --border-primary: rgba(226, 232, 240, 0.8);
+  --border-secondary: rgba(203, 213, 225, 0.5);
+  --border-glass: rgba(255, 255, 255, 0.6);
+  
+  --accent-primary: #1e4ed8;     /* Modern Cobalt Blue */
+  --accent-secondary: #fbbf24;   /* Premium Amber/Gold */
+  --accent-glow: rgba(30, 78, 216, 0.15);
+  --accent-gradient: linear-gradient(135deg, #1e4ed8 0%, #3b82f6 50%, #1d4ed8 100%);
+  --accent-gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  --bg-gradient-mesh: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+                       radial-gradient(at 50% 0%, rgba(251, 191, 36, 0.03) 0px, transparent 50%),
+                       radial-gradient(at 100% 100%, rgba(30, 58, 138, 0.04) 0px, transparent 50%);
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+/* Theme Settings: DARK MODE */
+[data-theme='dark'] {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --bg-glass: rgba(11, 15, 25, 0.7);
+  --bg-glass-heavy: rgba(17, 24, 39, 0.85);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+  
+  --border-primary: rgba(37, 99, 235, 0.15);
+  --border-secondary: rgba(55, 65, 81, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.05);
+  
+  --accent-primary: #3b82f6;     /* Bright High-Tech Blue */
+  --accent-secondary: #fbbf24;   /* Premium Amber/Gold */
+  --accent-glow: rgba(59, 130, 246, 0.25);
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #60a5fa 50%, #1d4ed8 100%);
+  --accent-gold-gradient: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --bg-gradient-mesh: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+                       radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.07) 0px, transparent 50%),
+                       radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.8) 0px, transparent 50%);
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+   Base CSS Resets & Setup
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  background-image: var(--bg-gradient-mesh);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--bg-primary);
+  transition: background var(--transition-fast);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ==========================================
+   Global Shell & Structural Layout
+   ========================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-bg-alt {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* ==========================================
+   Section Header Standard
+   ========================================== */
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4.5rem auto;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.section-desc {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================
+   Premium Glassmorphism Panels
+   ========================================== */
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-glass);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  box-shadow: var(--shadow-lg), var(--shadow-glass);
+  border: 1px solid var(--border-primary);
+}
+
+/* ==========================================
+   Core Interactive Buttons (B2B Styling)
+   ========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-tertiary);
+  transform: translateY(-2px);
+  border-color: var(--text-muted);
+}
+
+.btn-accent {
+  background: var(--accent-gold-gradient);
+  color: #0f172a;
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.25);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================
+   Responsive Helper Layouts
+   ========================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================
+   Responsive Breakpoints
+   ========================================== */
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}

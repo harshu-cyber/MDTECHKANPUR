@@ -1,0 +1,125 @@
+.product-card-holder {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+}
+
+.card-top-accent {
+  height: 5px;
+  width: 100%;
+}
+
+.product-card-body {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-family: var(--font-body);
+}
+
+.product-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  border: 1.5px solid;
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.product-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.product-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.product-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Bullet highlights area */
+.product-spec-preview {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+  margin-bottom: 2.25rem;
+  border: 1px solid var(--border-primary);
+}
+
+.spec-preview-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.spec-icon {
+  color: var(--accent-primary);
+  margin-right: 0.6rem;
+  flex-shrink: 0;
+}
+
+.spec-label {
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 0.3rem;
+}
+
+.spec-val {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Actions Footer inside card */
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.spec-doc-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.spec-doc-link:hover {
+  transform: translateX(3px);
+}
+
+.card-inquiry-btn {
+  font-size: 0.82rem;
+  padding: 0.55rem 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .product-card-body {
+    padding: 1.5rem;
+  }
+}

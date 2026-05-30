@@ -1,0 +1,256 @@
+.footer-wrapper {
+  background: #0b0f19;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer Overlay background */
+.footer-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.15) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.footer-top-deck {
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 1.2fr 1.5fr;
+  gap: 3.5rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  height: 52px;
+  width: auto;
+  margin-bottom: 1.5rem;
+}
+
+.brand-summary {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cert-seals {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.seal-badge {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+/* Col Titles */
+.footer-col-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-inverse);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-col-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-gradient);
+}
+
+/* Sitemap Links */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--accent-primary);
+  transform: translateX(3px);
+  display: inline-block;
+}
+
+/* Contact Details Card */
+.footer-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.contact-icon {
+  color: var(--accent-primary);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.contact-item a {
+  transition: color var(--transition-fast);
+}
+
+.contact-item a:hover {
+  color: var(--accent-primary);
+}
+
+/* Distributor Relations Newsletter Input */
+.newsletter-pitch {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.subscribe-form {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color var(--transition-fast);
+}
+
+.input-group:focus-within {
+  border-color: var(--accent-primary);
+}
+
+.subscribe-input {
+  flex-grow: 1;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.subscribe-input::placeholder {
+  color: #475569;
+}
+
+.subscribe-btn {
+  background: var(--accent-gradient);
+  color: white;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.subscribe-btn:hover {
+  opacity: 0.9;
+}
+
+/* Bottom Deck */
+.footer-bottom-deck {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  position: relative;
+  z-index: 2;
+}
+
+.bottom-deck-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.legal-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  transition: color var(--transition-fast);
+}
+
+.legal-links a:hover {
+  color: var(--accent-primary);
+}
+
+.compliance-tag {
+  background: rgba(255, 255, 255, 0.03);
+  color: #475569;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .bottom-deck-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .legal-links {
+    justify-content: center;
+  }
+}
