@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <article className="product-card-holder glass-panel ani-fade-in">
-      <!-- Card Badge with Dynamic Accent Color Border -->
+      {/* Card Badge with Dynamic Accent Color Border */}
       <div className="card-top-accent" style={{ background: colorCode }}></div>
       
       <div className="product-card-body">
@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
         <p className="product-card-subtitle">{subtitle}</p>
         <p className="product-card-desc">{shortDesc}</p>
 
-        <!-- Technical Parameters Bullet Highlights -->
+        {/* Technical Parameters Bullet Highlights */}
         <div className="product-spec-preview">
           <div className="spec-preview-item">
             <Layers size={15} className="spec-icon" />
@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
 
-        <!-- B2B Actions -->
+        {/* B2B Actions */}
         <div className="product-card-footer">
           <Link to={`/products?selected=${id}`} className="spec-doc-link">
             <span>Technical Datasheet</span>

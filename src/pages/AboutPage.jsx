@@ -1,11 +1,11 @@
 import React from 'react';
-import { ShieldCheck, Recycle, Factory, Landmark, Award, ChevronRight } from 'lucide-react';
+import { ShieldCheck, Recycle, Factory, Landmark, Award } from 'lucide-react';
 import './AboutPage.css';
 
 const AboutPage = () => {
   return (
     <div className="about-page-wrapper ani-fade-in">
-      <!-- 1. Page Header Hero -->
+      {/* 1. Page Header Hero */}
       <section className="about-hero-section">
         <div className="container">
           <span className="section-subtitle">Corporate Profile</span>
@@ -16,7 +16,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <!-- 2. Profile Summary & Executive Message -->
+      {/* 2. Profile Summary & Executive Message */}
       <section className="section">
         <div className="container grid-2 profile-grid">
           <div className="profile-content">
@@ -28,7 +28,7 @@ const AboutPage = () => {
               From our state-of-the-art facilities in Dadanagar, Kanpur, we have grown from a regional compounding plant into an international B2B exporter. Our commitment is rooted in active material sciences, strict quality checkpoints, and environmental sustainability.
             </p>
             
-            <!-- Bullet Highlight -->
+            {/* Executive Quote */}
             <div className="quote-box glass-panel">
               <p className="quote-text">
                 "Our B2B clients don't just buy masterbatches; they purchase structural guarantee, surface sheen, and production efficiency. We co-create formulations that keep extrusion lines running continuously."
@@ -39,7 +39,7 @@ const AboutPage = () => {
 
           <div className="profile-visuals flex-center">
             <div className="profile-stats-card glass-panel shimmer-bg">
-              <span className="stats-header-title">Global Compliance & Standards</span>
+              <span className="stats-header-title">Global Compliance &amp; Standards</span>
               
               <div className="compliance-row">
                 <ShieldCheck size={20} color="#25d366" />
@@ -60,7 +60,7 @@ const AboutPage = () => {
               <div className="compliance-row">
                 <Recycle size={20} color="#06b6d4" />
                 <div>
-                  <span className="compliance-name">REACH & RoHS Declarations</span>
+                  <span className="compliance-name">REACH &amp; RoHS Declarations</span>
                   <span className="compliance-desc">Zero heavy metals or restricted hazardous chemicals.</span>
                 </div>
               </div>
@@ -69,7 +69,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <!-- 3. Our Four Core Corporate Pillars -->
+      {/* 3. Our Four Core Corporate Pillars */}
       <section className="section section-bg-alt">
         <div className="container">
           <div className="section-header">
@@ -108,7 +108,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <!-- 4. Green Initiative (Bio & Circular Economy focus) -->
+      {/* 4. Green Initiative (Bio & Circular Economy focus) */}
       <section className="section green-initiative-section">
         <div className="green-overlay"></div>
         <div className="container green-container">

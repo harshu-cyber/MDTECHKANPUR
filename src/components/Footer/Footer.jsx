@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Send, ShieldAlert, Award, FileCheck2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Award, FileCheck2 } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="footer-wrapper">
       <div className="footer-top-deck">
         <div className="container footer-grid">
-          <!-- Col 1: Brand Profile -->
+          {/* Col 1: Brand Profile */}
           <div className="footer-col brand-col">
             <Link to="/" className="footer-logo-link">
               <img src="/logo.svg" alt="MD TechKanpur Logo" className="footer-logo" />
@@ -35,21 +35,21 @@ const Footer = () => {
             </div>
           </div>
 
-          <!-- Col 2: Sitemap Quicklinks -->
+          {/* Col 2: Sitemap Quicklinks */}
           <div className="footer-col sitemap-col">
             <span className="footer-col-title">Sitemap</span>
             <ul className="footer-links">
               <li><Link to="/">Corporate Home</Link></li>
               <li><Link to="/about">Corporate Profile</Link></li>
               <li><Link to="/products">Masterbatch Catalog</Link></li>
-              <li><Link to="/infrastructure">Machinery & Infrastructure</Link></li>
-              <li><Link to="/contact">Inquiries & Quotes</Link></li>
+              <li><Link to="/infrastructure">Machinery &amp; Infrastructure</Link></li>
+              <li><Link to="/contact">Inquiries &amp; Quotes</Link></li>
             </ul>
           </div>
 
-          <!-- Col 3: Contact Info Cards -->
+          {/* Col 3: Contact Info Cards */}
           <div className="footer-col contact-col">
-            <span className="footer-col-title">Sales & Head Office</span>
+            <span className="footer-col-title">Sales &amp; Head Office</span>
             <div className="footer-contact-details">
               <div className="contact-item">
                 <MapPin className="contact-icon" size={16} />
@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <!-- Col 4: Distributor Newsletter -->
+          {/* Col 4: Distributor Newsletter */}
           <div className="footer-col newsletter-col">
             <span className="footer-col-title">Distributor Relations</span>
             <p className="newsletter-pitch">
@@ -89,7 +89,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <!-- Bottom Deck -->
+      {/* Bottom Deck */}
       <div className="footer-bottom-deck">
         <div className="container bottom-deck-container">
           <p className="copyright-text">
@@ -98,8 +98,6 @@ const Footer = () => {
           <div className="legal-links">
             <span className="compliance-tag" title="REACH Chemicals Safety Standard">REACH Compliant</span>
             <span className="compliance-tag" title="RoHS Non-Hazardous Substance standard">RoHS Certified</span>
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Trade</Link>
           </div>
         </div>
       </div>

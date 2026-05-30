@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Award, Globe, HelpCircle } from 'lucide-react';
+import { Menu, X, ChevronDown, Award, Globe } from 'lucide-react';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Navbar.css';
 
@@ -27,12 +27,11 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setShowMegaMenu(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
   return (
     <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
-      <!-- Upper Utility Bar (Premium B2B Vibe) -->
+      {/* Upper Utility Bar (Premium B2B Vibe) */}
       <div className="navbar-top-bar">
         <div className="container top-bar-container">
           <div className="top-bar-item">
@@ -41,29 +40,29 @@ const Navbar = () => {
           </div>
           <div className="top-bar-item flex-right">
             <Award size={13} color="var(--accent-secondary)" />
-            <span>ISO 9001:2015 & FDA Certified Manufacturing</span>
+            <span>ISO 9001:2015 &amp; FDA Certified Manufacturing</span>
           </div>
         </div>
       </div>
 
-      <!-- Main Navigation Menu -->
+      {/* Main Navigation Menu */}
       <div className="navbar-main">
         <div className="container main-nav-container">
-          <!-- Logo -->
+          {/* Logo */}
           <Link to="/" className="navbar-brand">
             <img src="/logo.svg" alt="MD TechKanpur Logo" className="navbar-logo" />
           </Link>
 
-          <!-- Desktop Routes -->
+          {/* Desktop Routes */}
           <nav className="desktop-nav">
-            <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} end>
               Home
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
               Corporate Profile
             </NavLink>
             
-            <!-- Products with Mega Dropdown Hover -->
+            {/* Products with Mega Dropdown Hover */}
             <div 
               className="nav-link-dropdown-wrapper"
               onMouseEnter={() => setShowMegaMenu(true)}
@@ -72,9 +71,6 @@ const Navbar = () => {
               <NavLink 
                 to="/products" 
                 className={({ isActive }) => `nav-link nav-link-dropdown ${isActive ? 'active' : ''}`}
-                onClick={(e) => {
-                  // Allow navigation, dropdown is secondary helper
-                }}
               >
                 Polymer Products <ChevronDown size={14} className="dropdown-arrow" />
               </NavLink>
@@ -85,40 +81,40 @@ const Navbar = () => {
                     <div className="mega-col intro-col">
                       <span className="mega-col-title">MD Tech Compounds</span>
                       <p className="mega-col-desc">Explore our premium masterbatches manufactured to international quality levels for critical plastic conversion lines.</p>
-                      <Link to="/products" className="btn btn-primary mega-cta-btn">View Full Catalog</Link>
+                      <Link to="/products" className="btn btn-primary mega-cta-btn" onClick={() => setShowMegaMenu(false)}>View Full Catalog</Link>
                     </div>
                     <div className="mega-col links-col">
                       <span className="mega-col-title">Masterbatch Categories</span>
                       <div className="mega-links-grid">
-                        <Link to="/products?category=white" className="mega-link-item">
+                        <Link to="/products?category=white" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-white"></span>
                           <div>
                             <span className="mega-link-name">Titanium White Masterbatches</span>
                             <span className="mega-link-sub">Formulated up to 75% Rutile TiO₂</span>
                           </div>
                         </Link>
-                        <Link to="/products?category=black" className="mega-link-item">
+                        <Link to="/products?category=black" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-black"></span>
                           <div>
                             <span className="mega-link-name">Carbon Black Masterbatches</span>
                             <span className="mega-link-sub">Advanced dispersion and jetness</span>
                           </div>
                         </Link>
-                        <Link to="/products?category=color" className="mega-link-item">
+                        <Link to="/products?category=color" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-color"></span>
                           <div>
                             <span className="mega-link-name">Spectrum Color Compounds</span>
                             <span className="mega-link-sub">Precision matched Delta E &lt; 0.8</span>
                           </div>
                         </Link>
-                        <Link to="/products?category=additive" className="mega-link-item">
+                        <Link to="/products?category=additive" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-additive"></span>
                           <div>
                             <span className="mega-link-name">Advanced Functional Additives</span>
                             <span className="mega-link-sub">UV, Anti-static, slip processing aids</span>
                           </div>
                         </Link>
-                        <Link to="/products?category=filler" className="mega-link-item">
+                        <Link to="/products?category=filler" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-filler"></span>
                           <div>
                             <span className="mega-link-name">Eco-Filler Compounds</span>
@@ -136,17 +132,17 @@ const Navbar = () => {
               Infrastructure
             </NavLink>
             <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Contact & Inquiries
+              Contact &amp; Inquiries
             </NavLink>
           </nav>
 
-          <!-- Right Action Controls (Theme, B2B CTA) -->
+          {/* Right Action Controls (Theme, B2B CTA) */}
           <div className="nav-controls">
             <ThemeToggle />
             <Link to="/contact" className="btn btn-primary nav-cta-desktop">
               Inquire Now
             </Link>
-            <!-- Mobile Menu Toggle Button -->
+            {/* Mobile Menu Toggle Button */}
             <button className="mobile-toggle-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Navigation Menu">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -154,7 +150,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <!-- Mobile Drawer Overlay -->
+      {/* Mobile Drawer Overlay */}
       <div className={`mobile-nav-drawer ${isOpen ? 'open' : ''}`}>
         <div className="mobile-drawer-header">
           <Link to="/" className="navbar-brand" onClick={() => setIsOpen(false)}>
@@ -165,7 +161,7 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="mobile-nav-links">
-          <NavLink to="/" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <NavLink to="/" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)} end>
             Home
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
@@ -178,7 +174,7 @@ const Navbar = () => {
             Infrastructure
           </NavLink>
           <NavLink to="/contact" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-            Contact & Inquiries
+            Contact &amp; Inquiries
           </NavLink>
           
           <div className="mobile-nav-cta">

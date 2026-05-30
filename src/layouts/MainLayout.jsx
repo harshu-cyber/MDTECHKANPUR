@@ -19,18 +19,18 @@ const MainLayout = () => {
     <>
       <ScrollToTop />
       
-      <!-- Top level navigation -->
+      {/* Top level navigation */}
       <Navbar />
       
-      <!-- Main Content Outlet Area -->
+      {/* Main Content Outlet Area */}
       <main style={{ minHeight: 'calc(100vh - 400px)', paddingTop: '130px' }}>
         <Outlet />
       </main>
       
-      <!-- B2B WhatsApp floating support -->
+      {/* B2B WhatsApp floating support */}
       <WhatsAppButton />
       
-      <!-- Footer -->
+      {/* Footer */}
       <Footer />
     </>
   );
