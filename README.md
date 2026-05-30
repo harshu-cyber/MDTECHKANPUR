@@ -1,4 +1,9 @@
-# React + Vite
+# MDTECHKANPUR
+
+This repository is split into two sub-projects:
+
+- `frontend/` — React + Vite application
+- `backend/` — simple Express backend scaffold
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
