@@ -53,6 +53,7 @@ const Footer = () => {
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/products">Products & Machinery</Link></li>
               <li><Link to="/infrastructure">Infrastructure</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/contact">Contact & Inquiries</Link></li>
             </ul>
           </div>
@@ -130,6 +131,7 @@ const Footer = () => {
           <p className="copyright-text">
             © {currentYear} <strong>MD TechKanpur</strong>. All rights reserved.
             &nbsp;·&nbsp; Kanpur's Trusted Plastic Machinery Partner
+            &nbsp;·&nbsp; <Link to="/admin" style={{ color: 'var(--accent-primary)', fontWeight: 'bold' }}>Admin Portal</Link>
           </p>
           <div className="bottom-tags">
             <span className="compliance-tag">Sales &amp; Service</span>
