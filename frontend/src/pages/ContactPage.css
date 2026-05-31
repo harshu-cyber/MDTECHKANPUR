@@ -7,25 +7,37 @@
    ========================================== */
 
 .contact-hero {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
-  padding: 5.5rem 0 4.5rem;
+  background: linear-gradient(135deg, #080b14 0%, #0d0d0d 100%);
+  border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+  padding: 6rem 0 4.5rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .contact-hero-title {
+  font-family: var(--font-display);
   font-size: 3.2rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   margin-bottom: 1.25rem;
+  color: #ffffff;
 }
 
 .contact-hero-desc {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
+  font-size: 1.1rem;
+  color: rgba(245, 240, 232, 0.65);
   max-width: 680px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ==========================================
@@ -73,8 +85,8 @@
 }
 
 .info-icon-wrapper {
-  background: rgba(30, 78, 216, 0.1);
-  color: var(--accent-primary);
+  background: rgba(201, 162, 39, 0.1);
+  color: #c9a227;
   width: 44px;
   height: 44px;
   border-radius: var(--border-radius-sm);
@@ -103,12 +115,12 @@
 
 .info-link {
   font-weight: 700;
-  color: var(--accent-primary);
+  color: #c9a227;
   transition: color var(--transition-fast);
 }
 
 .info-link:hover {
-  color: var(--text-primary);
+  color: #e6b933;
 }
 
 .trust-strip {
@@ -120,9 +132,9 @@
 }
 
 .trust-badge {
-  background: rgba(30, 78, 216, 0.06);
-  border: 1px solid rgba(30, 78, 216, 0.15);
-  color: var(--accent-primary);
+  background: rgba(201, 162, 39, 0.08);
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  color: #c9a227;
   font-size: 0.72rem;
   font-weight: 800;
   padding: 0.3rem 0.75rem;

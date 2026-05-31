@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Recycle, Factory, Landmark, Award } from 'lucide-react';
+import { ShieldCheck, Recycle, Factory, Landmark, Award, Zap, Cpu } from 'lucide-react';
 import './AboutPage.css';
 
 const AboutPage = () => {
@@ -9,9 +9,9 @@ const AboutPage = () => {
       <section className="about-hero-section">
         <div className="container">
           <span className="section-subtitle">Corporate Profile</span>
-          <h1 className="about-hero-title">MD TechKanpur Integrity</h1>
+          <h1 className="about-hero-title">MD TechKanpur Machinery</h1>
           <p className="about-hero-desc">
-            For decades, we have been providing technical precision in chemical compounding to serve downstream plastic converting lines globally.
+            For over 15 years, we have been providing technical precision, factory-grade servicing, and premium sales support for plastic converting machinery across Kanpur and northern India.
           </p>
         </div>
       </section>
@@ -20,48 +20,48 @@ const AboutPage = () => {
       <section className="section">
         <div className="container grid-2 profile-grid">
           <div className="profile-content">
-            <h2 className="about-section-title">The Foundation of MD Tech</h2>
+            <h2 className="about-section-title">The Foundation of MD TechKanpur</h2>
             <p className="about-paragraph">
-              MD TechKanpur was established with a singular mission: to elevate the quality standards of plastic processing by supplying polymer masterbatches of uncompromised dispersion and compounding accuracy.
+              MD TechKanpur was established with a singular mission: to elevate the operational efficiency and quality standards of plastic processing units by supplying state-of-the-art machinery, certified technical overhauls, and premium replacement components.
             </p>
             <p className="about-paragraph">
-              From our state-of-the-art facilities in Dadanagar, Kanpur, we have grown from a regional compounding plant into an international B2B exporter. Our commitment is rooted in active material sciences, strict quality checkpoints, and environmental sustainability.
+              Operating from our dedicated technical service points and parts hubs in Dadanagar, Kanpur, we have grown from a specialized servicing team into a trusted B2B machinery dealer. Our commitment is rooted in practical mechanical science, robust electric and hydraulic standards, and rapid service response times.
             </p>
             
             {/* Executive Quote */}
             <div className="quote-box glass-panel">
               <p className="quote-text">
-                "Our B2B clients don't just buy masterbatches; they purchase structural guarantee, surface sheen, and production efficiency. We co-create formulations that keep extrusion lines running continuously."
+                "Our B2B partners don't just buy plastic machinery; they purchase production reliability and technical uptime. We ensure that every refurbished extruder, servo hydraulic press, or spare screw &amp; barrel is calibrated to run at peak capacity with minimum energy consumption."
               </p>
-              <span className="quote-author">- Technical Compounding Directorate, MD Tech</span>
+              <span className="quote-author">- Technical Operations Directorate, MD TechKanpur</span>
             </div>
           </div>
 
           <div className="profile-visuals flex-center">
             <div className="profile-stats-card glass-panel shimmer-bg">
-              <span className="stats-header-title">Global Compliance &amp; Standards</span>
+              <span className="stats-header-title">Technical Competence &amp; Standards</span>
               
+              <div className="compliance-row">
+                <Cpu size={20} color="#c9a227" />
+                <div>
+                  <span className="compliance-name">Servo Hydraulic Tuning</span>
+                  <span className="compliance-desc">Retrofitting and optimization for up to 50% power savings.</span>
+                </div>
+              </div>
+
+              <div className="compliance-row">
+                <Award size={20} color="#e6b933" />
+                <div>
+                  <span className="compliance-name">15-Point Diagnostic QC</span>
+                  <span className="compliance-desc">Rigorous checks covering barrel straightness, pressure limits, and PLC response.</span>
+                </div>
+              </div>
+
               <div className="compliance-row">
                 <ShieldCheck size={20} color="#25d366" />
                 <div>
-                  <span className="compliance-name">FDA Food Contact Standard</span>
-                  <span className="compliance-desc">Safe for direct food and beverage packaging lines.</span>
-                </div>
-              </div>
-
-              <div className="compliance-row">
-                <Award size={20} color="var(--accent-secondary)" />
-                <div>
-                  <span className="compliance-name">ISO 9001:2015 Certification</span>
-                  <span className="compliance-desc">Strict quality systems checking every raw material silo.</span>
-                </div>
-              </div>
-
-              <div className="compliance-row">
-                <Recycle size={20} color="#06b6d4" />
-                <div>
-                  <span className="compliance-name">REACH &amp; RoHS Declarations</span>
-                  <span className="compliance-desc">Zero heavy metals or restricted hazardous chemicals.</span>
+                  <span className="compliance-name">OEM-Quality Replacement Spares</span>
+                  <span className="compliance-desc">Supplying precision screws, barrels, and heaters directly from top-tier makers.</span>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ const AboutPage = () => {
             <span className="section-subtitle">Operational Creed</span>
             <h2 className="section-title">Our Corporate Pillars</h2>
             <p className="section-desc">
-              How we drive continuous value, scientific research, and long-term customer partnerships.
+              How we drive continuous value, engineering research, and long-term customer partnerships.
             </p>
           </div>
 
@@ -84,25 +84,25 @@ const AboutPage = () => {
             <div className="pillar-card glass-panel">
               <div className="pillar-icon"><Factory size={24} /></div>
               <h3 className="pillar-title">Technical Integrity</h3>
-              <p className="pillar-desc">Continuous twin-screw compounding lines configured to ensure perfect dispersion indexes with zero filter-pressure warnings.</p>
+              <p className="pillar-desc">Factory-grade servicing and rebuild programs configured to extend machine lifespan and ensure precise output controls.</p>
             </div>
 
             <div className="pillar-card glass-panel">
-              <div className="pillar-icon"><ShieldCheck size={24} /></div>
-              <h3 className="pillar-title">Uncompromising Quality</h3>
-              <p className="pillar-desc">Checking physical properties including density, Melt Flow Index (MFI), thermal decomposition, and moisture retention limits.</p>
+              <div className="pillar-icon"><Zap size={24} /></div>
+              <h3 className="pillar-title">Rapid Breakdown Support</h3>
+              <p className="pillar-desc">Emergency technical dispatch teams handling breakdown calls within 2 to 4 hours across Kanpur and neighboring industrial zones.</p>
             </div>
 
             <div className="pillar-card glass-panel">
               <div className="pillar-icon"><Recycle size={24} /></div>
-              <h3 className="pillar-title">Eco Sustainability</h3>
-              <p className="pillar-desc">Engineering bio-degradable polymer compounds and carrier-free liquid options to assist processors in reducing carbon footprints.</p>
+              <h3 className="pillar-title">Eco-Efficiency Support</h3>
+              <p className="pillar-desc">Modifying screws and tuning thermal profiles to help processors extrude eco-friendly biodegradable PLA compounds seamlessly.</p>
             </div>
 
             <div className="pillar-card glass-panel">
               <div className="pillar-icon"><Landmark size={24} /></div>
-              <h3 className="pillar-title">Distributor Trust</h3>
-              <p className="pillar-desc">Honoring prompt logistics timelines, transparent custom-formulations parameters, and direct support desk availability.</p>
+              <h3 className="pillar-title">Dealer Transparency</h3>
+              <p className="pillar-desc">Honoring prompt shipping timelines on replacement spares, fair AMC terms, and offering certified warranty on all machinery deals.</p>
             </div>
           </div>
         </div>
@@ -115,16 +115,16 @@ const AboutPage = () => {
           <div className="green-content glass-panel">
             <div className="green-badge">
               <Recycle size={14} />
-              <span>Bio-polymer Compounds</span>
+              <span>Bio-Polymer Machinery Tuning</span>
             </div>
-            <h2 className="green-title">Commitment to Circular Economics</h2>
+            <h2 className="green-title">Engineering for Circular Economics</h2>
             <p className="green-desc">
-              MD TechKanpur is actively pioneering starch-based and PLA-based biodegradable masterbatches. Our advanced formulations allow environmental bag-converters and thermoformers to exceed local regulatory norms and satisfy ecological mandates.
+              MD TechKanpur is actively modifying machine designs and screw profiles to process starch-based and PLA-based biodegradable polymer compounds. We assist bag-converters, straw-makers, and thermoformers to conform to plastic pollution bans and ecological mandates.
             </p>
             <ul className="green-bullets">
-              <li>Formulated with organic compostable matrices conforming to ASTM D6400 / EN 13432.</li>
-              <li>Slightly lower processing temperatures, reducing energy expenditure during final extrusion.</li>
-              <li>Custom additive blends containing heavy-duty UV blocks to prevent premature biodegradation outdoors.</li>
+              <li>Custom screw flight geometry adjustments to process biodegradable resins conforming to ASTM D6400 / EN 13432.</li>
+              <li>Low-shear barrel designs that prevent material overheating, avoiding early thermal degradation of organic polymer chains.</li>
+              <li>Integration of high-precision volumetric and gravimetric dosing units to control recycled blends accurately.</li>
             </ul>
           </div>
         </div>

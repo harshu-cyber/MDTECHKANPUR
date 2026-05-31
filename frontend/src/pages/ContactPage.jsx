@@ -78,10 +78,11 @@ const ContactPage = () => {
       {/* Hero */}
       <section className="contact-hero">
         <div className="container">
-          <span className="section-subtitle">B2B Inquiry Portal</span>
-          <h1 className="contact-hero-title">Connect With Our Technical Sales Desk</h1>
+          <span className="section-subtitle">Get In Touch</span>
+          <h1 className="contact-hero-title">Contact MD TechKanpur</h1>
           <p className="contact-hero-desc">
-            For commercial samples, bulk order pricing, technical datasheets, or custom formulation discussions — our polymer compounding specialists respond within 4 business hours.
+            Looking to buy, service, or get spare parts for plastic machinery? Our team is here to help.
+            Call us directly at <strong style={{color:'#c9a227'}}>7499645819</strong> or fill in the form below.
           </p>
         </div>
       </section>
@@ -96,57 +97,55 @@ const ContactPage = () => {
             <div className="info-card glass-panel">
               <div className="info-icon-wrapper"><MapPin size={20} /></div>
               <div>
-                <span className="info-card-label">Head Office & Factory</span>
-                <p className="info-card-value">Plot No. 12, Sector D, Industrial Area,<br />Dadanagar, Kanpur — 208022<br />Uttar Pradesh, India</p>
+                <span className="info-card-label">Office Address</span>
+                <p className="info-card-value">525 K, Barra Vishwa Bank,<br />Kanpur, Uttar Pradesh, India</p>
               </div>
             </div>
 
             <div className="info-card glass-panel">
               <div className="info-icon-wrapper"><Phone size={20} /></div>
               <div>
-                <span className="info-card-label">Sales Desk (Mon–Sat, 9AM–6PM IST)</span>
-                <a href="tel:+919876543210" className="info-card-value info-link">+91 98765 43210</a>
-                <a href="tel:+911234567890" className="info-card-value info-link">+91 12345 67890 (WhatsApp)</a>
+                <span className="info-card-label">Call / WhatsApp (Mon–Sat, 9AM–7PM)</span>
+                <a href="tel:7499645819" className="info-card-value info-link">7499645819</a>
               </div>
             </div>
 
             <div className="info-card glass-panel">
               <div className="info-icon-wrapper"><Mail size={20} /></div>
               <div>
-                <span className="info-card-label">Email Inquiries</span>
-                <a href="mailto:sales@mdtechkanpur.com" className="info-card-value info-link">sales@mdtechkanpur.com</a>
-                <a href="mailto:technical@mdtechkanpur.com" className="info-card-value info-link">technical@mdtechkanpur.com</a>
+                <span className="info-card-label">Email</span>
+                <a href="mailto:mdtechkanpur@gmail.com" className="info-card-value info-link">mdtechkanpur@gmail.com</a>
               </div>
             </div>
 
             <div className="info-card glass-panel">
               <div className="info-icon-wrapper"><Clock size={20} /></div>
               <div>
-                <span className="info-card-label">Response Commitment</span>
-                <p className="info-card-value">Commercial quotes: within 4 business hours<br />Technical TDS requests: Same day<br />Custom formulation discussions: 24–48 hours</p>
+                <span className="info-card-label">Our Commitment</span>
+                <p className="info-card-value">On-site service calls: within 2–4 hours<br />Machine quotes: same day<br />Spare parts availability: immediate</p>
               </div>
             </div>
 
             {/* Trust Badges */}
             <div className="trust-strip glass-panel">
-              <span className="trust-badge">ISO 9001:2015 Certified</span>
-              <span className="trust-badge">FDA Compliant</span>
-              <span className="trust-badge">REACH Compliant</span>
-              <span className="trust-badge">RoHS Certified</span>
+              <span className="trust-badge">Sales &amp; Service</span>
+              <span className="trust-badge">AMC Available</span>
+              <span className="trust-badge">Genuine Parts</span>
+              <span className="trust-badge">Fast Response</span>
             </div>
           </div>
 
           {/* RIGHT: B2B Inquiry Form */}
           <div className="inquiry-form-wrapper glass-panel">
-            <h2 className="form-title">Product Inquiry & Quote Request</h2>
-            <p className="form-subtitle">Fill in your commercial details below. All fields marked * are required.</p>
+            <h2 className="form-title">Service &amp; Product Inquiry</h2>
+            <p className="form-subtitle">Tell us what you need — we'll get back to you fast. All fields marked * are required.</p>
 
             {status === 'success' && (
               <div className="status-banner success-banner ani-slide-up">
                 <CheckCircle2 size={20} />
                 <div>
                   <strong>Inquiry Submitted Successfully!</strong>
-                  <p>Our technical sales representative will contact you within 4 business hours.</p>
+                  <p>Our representative will contact you shortly.</p>
                 </div>
               </div>
             )}
@@ -156,7 +155,7 @@ const ContactPage = () => {
                 <AlertCircle size={20} />
                 <div>
                   <strong>Submission Failed</strong>
-                  <p>Please try again or contact us directly at sales@mdtechkanpur.com</p>
+                  <p>Please try again or contact us directly at mdtechkanpur@gmail.com</p>
                 </div>
               </div>
             )}
@@ -182,7 +181,7 @@ const ContactPage = () => {
                 </div>
                 <div className={`form-group ${errors.country ? 'has-error' : ''}`}>
                   <label htmlFor="country">Country *</label>
-                  <input id="country" name="country" type="text" placeholder="e.g. India, Germany, UAE" value={form.country} onChange={handleChange} />
+                  <input id="country" name="country" type="text" placeholder="e.g. India" value={form.country} onChange={handleChange} />
                   {errors.country && <span className="error-msg">{errors.country}</span>}
                 </div>
               </div>
@@ -202,37 +201,42 @@ const ContactPage = () => {
 
               <div className="form-row">
                 <div className={`form-group ${errors.productId ? 'has-error' : ''}`}>
-                  <label htmlFor="productId">Product of Interest *</label>
+                  <label htmlFor="productId">Service / Product Required *</label>
                   <select id="productId" name="productId" value={form.productId} onChange={handleChange}>
-                    <option value="">— Select Masterbatch —</option>
-                    {products.map(p => (
-                      <option key={p.id} value={p.id}>{p.name}</option>
-                    ))}
-                    <option value="custom">Custom / Private Label Formulation</option>
+                    <option value="">— Select Requirement —</option>
+                    <option value="extruder-new">Plastic Extruder (New)</option>
+                    <option value="extruder-used">Plastic Extruder (Refurbished)</option>
+                    <option value="injection-new">Injection Moulding Machine (New)</option>
+                    <option value="injection-used">Injection Moulding Machine (Used)</option>
+                    <option value="auxiliary">Auxiliary Equipment</option>
+                    <option value="spare-parts">Spare Parts</option>
+                    <option value="service">On-Site Servicing / Repair</option>
+                    <option value="amc">Annual Maintenance Contract (AMC)</option>
+                    <option value="raw-material">Raw Material / Granules</option>
+                    <option value="other">Other / Custom Requirement</option>
                   </select>
                   {errors.productId && <span className="error-msg">{errors.productId}</span>}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="annualVolume">Estimated Annual Volume</label>
+                  <label htmlFor="annualVolume">Budget Range</label>
                   <select id="annualVolume" name="annualVolume" value={form.annualVolume} onChange={handleChange}>
-                    <option value="">— Select Volume —</option>
-                    <option value="trial">Trial / Sample (10–50 kg)</option>
-                    <option value="small">Small (&lt; 5 MT/month)</option>
-                    <option value="medium">Medium (5–50 MT/month)</option>
-                    <option value="large">Large (50–500 MT/month)</option>
-                    <option value="xlarge">Very Large (&gt; 500 MT/month)</option>
+                    <option value="">— Select Budget —</option>
+                    <option value="small">Under ₹1 Lakh</option>
+                    <option value="medium">₹1 – 5 Lakh</option>
+                    <option value="large">₹5 – 20 Lakh</option>
+                    <option value="xlarge">Above ₹20 Lakh</option>
                   </select>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="processingMethod">Processing Method / Machinery Type</label>
-                <input id="processingMethod" name="processingMethod" type="text" placeholder="e.g. Blown film, Injection moulding, Pipe extrusion..." value={form.processingMethod} onChange={handleChange} />
+                <label htmlFor="processingMethod">Machine Type / Current Equipment</label>
+                <input id="processingMethod" name="processingMethod" type="text" placeholder="e.g. 80-ton injection moulding, 45mm extruder, pipe line..." value={form.processingMethod} onChange={handleChange} />
               </div>
 
               <div className={`form-group ${errors.message ? 'has-error' : ''}`}>
-                <label htmlFor="message">Inquiry Details / Technical Requirements *</label>
-                <textarea id="message" name="message" rows="5" placeholder="Describe your application, required properties (opacity, MFI, temperature range), and any special certification needs (FDA, food-grade, REACH, etc.)..." value={form.message} onChange={handleChange}></textarea>
+                <label htmlFor="message">Describe Your Requirement *</label>
+                <textarea id="message" name="message" rows="5" placeholder="e.g. Need servicing for a 100-ton injection moulding machine, facing heating issues. Or: Looking to buy a new single-screw extruder for pipe making..." value={form.message} onChange={handleChange}></textarea>
                 {errors.message && <span className="error-msg">{errors.message}</span>}
               </div>
 
@@ -251,9 +255,9 @@ const ContactPage = () => {
                 id="submit-inquiry-btn"
               >
                 {status === 'loading' ? (
-                  <><Loader size={16} className="spin-icon" /> Submitting Inquiry...</>
+                  <><Loader size={16} className="spin-icon" /> Submitting...</>
                 ) : (
-                  <><Send size={16} /> Submit B2B Inquiry</>
+                  <><Send size={16} /> Send Inquiry &amp; Get Quote</>
                 )}
               </button>
             </form>

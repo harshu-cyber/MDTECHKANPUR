@@ -5,9 +5,9 @@ import './WhatsAppButton.css';
 const WhatsAppButton = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   
-  // Custom pre-filled WhatsApp link for industrial buyers
-  const phoneNumber = "919876543210"; // Placeholder for MD TechKanpur sales desk
-  const defaultMessage = encodeURIComponent("Hello MD TechKanpur, I am visiting your B2B portal and would like to inquire about your masterbatch products. Please connect me with a technical sales expert.");
+  // MD TechKanpur real WhatsApp number
+  const phoneNumber = "917499645819";
+  const defaultMessage = encodeURIComponent("Hello MD TechKanpur, I want to inquire about plastic machinery (extruders / injection moulding / auxiliary equipment). Please connect me with your sales team.");
   const waUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
   return (
@@ -18,8 +18,8 @@ const WhatsAppButton = () => {
     >
       {showTooltip && (
         <div className="whatsapp-tooltip ani-scale-in">
-          <span className="tooltip-title">B2B Quick Quote Desk</span>
-          <span className="tooltip-sub">Average response: 5 mins</span>
+          <span className="tooltip-title">Chat on WhatsApp</span>
+          <span className="tooltip-sub">Quick response guaranteed!</span>
         </div>
       )}
       <a 

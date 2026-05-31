@@ -36,11 +36,11 @@ const Navbar = () => {
         <div className="container top-bar-container">
           <div className="top-bar-item">
             <Globe size={13} />
-            <span>Global Exports to Europe, Americas, Middle East</span>
+            <span>525 K, Barra Vishwa Bank, Kanpur — Sales &amp; Service</span>
           </div>
           <div className="top-bar-item flex-right">
-            <Award size={13} color="var(--accent-secondary)" />
-            <span>ISO 9001:2015 &amp; FDA Certified Manufacturing</span>
+            <Award size={13} color="var(--accent-primary)" />
+            <span>📞 7499645819 &nbsp;|&nbsp; Plastic Machinery Specialist</span>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="container main-nav-container">
           {/* Logo */}
           <Link to="/" className="navbar-brand">
-            <img src="/logo.svg" alt="MD TechKanpur Logo" className="navbar-logo" />
+            <img src="/logo-new.png" alt="MD TechKanpur Logo" className="navbar-logo" />
           </Link>
 
           {/* Desktop Routes */}
@@ -72,53 +72,53 @@ const Navbar = () => {
                 to="/products" 
                 className={({ isActive }) => `nav-link nav-link-dropdown ${isActive ? 'active' : ''}`}
               >
-                Polymer Products <ChevronDown size={14} className="dropdown-arrow" />
+                Machinery &amp; Products <ChevronDown size={14} className="dropdown-arrow" />
               </NavLink>
 
               {showMegaMenu && (
                 <div className="mega-dropdown ani-scale-in">
                   <div className="mega-grid">
                     <div className="mega-col intro-col">
-                      <span className="mega-col-title">MD Tech Compounds</span>
-                      <p className="mega-col-desc">Explore our premium masterbatches manufactured to international quality levels for critical plastic conversion lines.</p>
+                      <span className="mega-col-title">MD Tech Machinery</span>
+                      <p className="mega-col-desc">Explore our high-performance extruders, injection moulding systems, robust auxiliary equipment, and genuine spare parts.</p>
                       <Link to="/products" className="btn btn-primary mega-cta-btn" onClick={() => setShowMegaMenu(false)}>View Full Catalog</Link>
                     </div>
                     <div className="mega-col links-col">
-                      <span className="mega-col-title">Masterbatch Categories</span>
+                      <span className="mega-col-title">Machinery Categories</span>
                       <div className="mega-links-grid">
-                        <Link to="/products?category=white" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
-                          <span className="badge-dot color-white"></span>
-                          <div>
-                            <span className="mega-link-name">Titanium White Masterbatches</span>
-                            <span className="mega-link-sub">Formulated up to 75% Rutile TiO₂</span>
-                          </div>
-                        </Link>
-                        <Link to="/products?category=black" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
-                          <span className="badge-dot color-black"></span>
-                          <div>
-                            <span className="mega-link-name">Carbon Black Masterbatches</span>
-                            <span className="mega-link-sub">Advanced dispersion and jetness</span>
-                          </div>
-                        </Link>
-                        <Link to="/products?category=color" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
-                          <span className="badge-dot color-color"></span>
-                          <div>
-                            <span className="mega-link-name">Spectrum Color Compounds</span>
-                            <span className="mega-link-sub">Precision matched Delta E &lt; 0.8</span>
-                          </div>
-                        </Link>
-                        <Link to="/products?category=additive" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
+                        <Link to="/products?category=extruder" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-additive"></span>
                           <div>
-                            <span className="mega-link-name">Advanced Functional Additives</span>
-                            <span className="mega-link-sub">UV, Anti-static, slip processing aids</span>
+                            <span className="mega-link-name">Plastic Extruders</span>
+                            <span className="mega-link-sub">Single &amp; twin screw extruders</span>
                           </div>
                         </Link>
-                        <Link to="/products?category=filler" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
+                        <Link to="/products?category=moulding" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
+                          <span className="badge-dot color-color"></span>
+                          <div>
+                            <span className="mega-link-name">Injection Moulding</span>
+                            <span className="mega-link-sub">Servo-driven precision machines</span>
+                          </div>
+                        </Link>
+                        <Link to="/products?category=auxiliary" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
                           <span className="badge-dot color-filler"></span>
                           <div>
-                            <span className="mega-link-name">Eco-Filler Compounds</span>
-                            <span className="mega-link-sub">High-rigidity cost savers</span>
+                            <span className="mega-link-name">Auxiliary Equipment</span>
+                            <span className="mega-link-sub">Dryers, chillers &amp; autoloaders</span>
+                          </div>
+                        </Link>
+                        <Link to="/products?category=spares" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
+                          <span className="badge-dot color-white"></span>
+                          <div>
+                            <span className="mega-link-name">Genuine Spare Parts</span>
+                            <span className="mega-link-sub">Screws, barrels &amp; custom parts</span>
+                          </div>
+                        </Link>
+                        <Link to="/products?category=raw_material" className="mega-link-item" onClick={() => setShowMegaMenu(false)}>
+                          <span className="badge-dot color-black"></span>
+                          <div>
+                            <span className="mega-link-name">Raw Materials</span>
+                            <span className="mega-link-sub">Premium PP, PE, ABS granules</span>
                           </div>
                         </Link>
                       </div>
@@ -139,9 +139,9 @@ const Navbar = () => {
           {/* Right Action Controls (Theme, B2B CTA) */}
           <div className="nav-controls">
             <ThemeToggle />
-            <Link to="/contact" className="btn btn-primary nav-cta-desktop">
-              Inquire Now
-            </Link>
+            <a href="tel:7499645819" className="btn btn-primary nav-cta-desktop">
+              📞 Call Now
+            </a>
             {/* Mobile Menu Toggle Button */}
             <button className="mobile-toggle-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Navigation Menu">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -154,7 +154,7 @@ const Navbar = () => {
       <div className={`mobile-nav-drawer ${isOpen ? 'open' : ''}`}>
         <div className="mobile-drawer-header">
           <Link to="/" className="navbar-brand" onClick={() => setIsOpen(false)}>
-            <img src="/logo.svg" alt="MD TechKanpur Logo" className="navbar-logo" />
+            <img src="/logo-new.png" alt="MD TechKanpur Logo" className="navbar-logo" />
           </Link>
           <button className="mobile-close-btn" onClick={() => setIsOpen(false)}>
             <X size={24} />
@@ -168,7 +168,7 @@ const Navbar = () => {
             Corporate Profile
           </NavLink>
           <NavLink to="/products" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-            Polymer Products
+            Machinery &amp; Products
           </NavLink>
           <NavLink to="/infrastructure" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
             Infrastructure

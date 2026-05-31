@@ -23,11 +23,11 @@ const ProductsPage = () => {
 
   const categories = [
     { id: 'all', label: 'All Products' },
-    { id: 'white', label: 'White (TiO₂)' },
-    { id: 'black', label: 'Carbon Black' },
-    { id: 'color', label: 'Spectrum Color' },
-    { id: 'additive', label: 'Functional Additives' },
-    { id: 'filler', label: 'Eco-Fillers' },
+    { id: 'extruder', label: 'Extruders' },
+    { id: 'moulding', label: 'Injection Moulding' },
+    { id: 'auxiliary', label: 'Auxiliaries' },
+    { id: 'spares', label: 'Spare Parts' },
+    { id: 'raw_material', label: 'Raw Materials' },
   ];
 
   const filteredProducts = products.filter(p => {
@@ -44,10 +44,11 @@ const ProductsPage = () => {
       {/* Page Header */}
       <section className="products-hero">
         <div className="container">
-          <span className="section-subtitle">Masterbatch Catalog</span>
-          <h1 className="products-hero-title">Polymer Product Portfolio</h1>
+          <span className="section-subtitle">Product Catalog</span>
+          <h1 className="products-hero-title">Plastic Machinery &amp; Products</h1>
           <p className="products-hero-desc">
-            High-dispersion masterbatch granules engineered for continuous film lines, blow molding, injection, and fiber extrusion. All batches tested to ISO and ASTM standards.
+            Browse our range of plastic extruders, injection moulding machines, auxiliary equipment, spare parts,
+            and raw material — all available for sale, service, and AMC.
           </p>
 
           {/* Search Bar */}
@@ -55,7 +56,7 @@ const ProductsPage = () => {
             <Search size={18} className="search-icon" />
             <input
               type="text"
-              placeholder="Search masterbatch products, applications, or additives..."
+              placeholder="Search machinery, extruders, parts, or polymer raw materials..."
               className="search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -89,7 +90,7 @@ const ProductsPage = () => {
 
           {/* Result Count */}
           <p className="result-count">
-            Showing <strong>{filteredProducts.length}</strong> of <strong>{products.length}</strong> masterbatch compounds
+            Showing <strong>{filteredProducts.length}</strong> of <strong>{products.length}</strong> machinery products &amp; spares
           </p>
 
           {/* Products Full Grid */}
@@ -100,7 +101,7 @@ const ProductsPage = () => {
                 <div className="product-full-body">
                   <div className="product-full-header">
                     <div>
-                      <span className="product-full-badge" style={{ borderColor: product.colorCode, color: product.id === 'white-masterbatch' ? 'var(--text-primary)' : product.colorCode }}>
+                      <span className="product-full-badge" style={{ borderColor: product.colorCode, color: product.colorCode }}>
                         {product.badge}
                       </span>
                       <h2 className="product-full-name">{product.name}</h2>

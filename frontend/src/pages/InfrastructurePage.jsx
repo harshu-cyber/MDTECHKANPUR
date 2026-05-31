@@ -1,48 +1,71 @@
 import React from 'react';
-import { Cpu, Thermometer, FlaskConical, PackageSearch, BarChart2, ShieldCheck } from 'lucide-react';
+import { Cpu, ShieldCheck, Wrench, Shield, Zap, Settings } from 'lucide-react';
 import './InfrastructurePage.css';
 
 const machines = [
   {
-    id: 'twin-screw',
-    name: 'Co-Rotating Twin-Screw Extruders',
-    specs: ['L/D Ratio: 40:1 (High throughput)', 'Screw Diameter: 35mm to 75mm', 'Output: 200 Kg/hr to 1.5 MT/hr per line', 'Temperature Range: 80°C – 320°C', 'Torque Class: 11.3 Nm/cm³ (High-torque)'],
-    desc: 'The backbone of our compounding facility — ZSK-style co-rotating twin-screw extruders capable of dispersive and distributive mixing at full co-rotating RPM ranges.',
+    id: 'refurbishing-workshop',
+    name: 'Machinery Refurbishing & Diagnostics Workshop',
+    specs: [
+      'Overhaul Capacity: Up to 10 heavy machines simultaneously',
+      'Lifting Support: Dual 10-Ton overhead gantry cranes',
+      'Diagnostic Gear: Hydraulic load cells & flow sensors',
+      'Temperature Monitors: Multi-channel infrared thermal trackers',
+      'Machine Covered: Single & twin screw extruders, heavy hydraulic presses'
+    ],
+    desc: 'The heart of our mechanical engineering facility — a heavy-duty workshop equipped with specialized tools, cranes, and diagnostic equipment to rebuild, repair, and test pre-owned plastic machinery.',
+    icon: Wrench
+  },
+  {
+    id: 'spare-warehouse',
+    name: 'Precision Spare Parts Warehouse',
+    specs: [
+      'Storage Area: 8,000 sq. ft. high-rack inventory system',
+      'Key Spares: Screws, barrels, heaters, thermocouples, gearboxes',
+      'Material Grades: Nitrided 38CrMoAlA & premium bimetallic alloys',
+      'Custom Processing: Quick cut & keyway milling on-site',
+      'Turnaround: Ready-stock shipping within 24 hours across UP'
+    ],
+    desc: 'We house a massive inventory of replacement components for injection moulding and extrusion systems. This enables us to dispatch essential parts instantly, minimizing expensive down-time for our B2B clients.',
+    icon: Settings
+  },
+  {
+    id: 'plc-lab',
+    name: 'Electrical & PLC Automation Lab',
+    specs: [
+      'Automation Systems: Techmation, Siemens S7, Delta, Gefran',
+      'Calibration: PID temperature auto-tuning controllers',
+      'Retrofitting: Upgrading manual contactor systems to solid-state & PLC',
+      'Servo Systems: Commissioning Phase and KEB energy-saving servo drives',
+      'Software Testing: Custom ladder logic programming and debugging simulator'
+    ],
+    desc: 'Our specialized electrical engineering lab handles PLC panel building, micro-controller programming, parameter backup, and servo-pump speed profiling to maximize production efficiency.',
     icon: Cpu
   },
   {
-    id: 'continuous-mixer',
-    name: 'FCM Continuous Mixers (Farrel)',
-    specs: ['Rotor Design: High-intensity dispersive mix', 'Capacity: 500 to 1800 Kg/hr', 'Cooling: Water-cooled barrel with jacket rings', 'Drive Power: 220 to 600 kW', 'Application: High-filler masterbatch (CaCO3 up to 83%)'],
-    desc: 'For high-filler loadings and carbon black compounds, our Farrel FCM continuous mixers deliver superior wetting-out and agglomerate breakdown without requiring pellet densification.',
-    icon: BarChart2
+    id: 'laser-calibration',
+    name: 'Laser Alignment & Calibration Bay',
+    specs: [
+      'Equipment Type: Double-axis high-accuracy laser aligner',
+      'Tolerance Limit: Parallelism deviation within 0.02 mm/meter',
+      'Barrel Mapping: Checking internal wear, ovality, and bending deviations',
+      'Vibration Tracking: Multi-channel FFT acceleration sensors',
+      'Testing Frequency: Performed on every screw overhaul and frame setup'
+    ],
+    desc: 'Misaligned barrels lead to rapid screw wear and higher motor torque load. We utilize precision laser calibration trackers to ensure perfect coaxial alignment of gearbox, screw, and barrel.',
+    icon: Zap
   },
   {
-    id: 'underwater-pelletizer',
-    name: 'Underwater Pelletizing Systems (UWP)',
-    specs: ['Die Plate: 48 to 256 holes', 'Pellet Diameter: 2.0mm to 3.5mm (custom)', 'Throughput: Up to 2,000 Kg/hr', 'Cooling Medium: Chilled water bath (8°C)',  'Moisture Content Output: < 0.1%'],
-    desc: 'Our automated underwater pelletizing systems produce uniformly sized, smooth, spherical pellets free from tails and agglomerations. This directly reduces screen-pack filters in downstream converters.',
-    icon: PackageSearch
-  },
-  {
-    id: 'spectrophotometer',
-    name: 'Datacolor Spectrophotometer System',
-    specs: ['Model: Datacolor 600 series', 'Light Sources: D65, TL84, CWF, UV-Fluorescent', 'Color Match Tolerance: ΔE* < 0.5 internal target', 'Storage: 18,000+ Formula Database', 'Certification: ISO 11664 conformance'],
-    desc: 'International-standard Datacolor 600 Spectrophotometers are used for primary color matches, pass/fail quality checking, and multi-illuminant metameric testing of every color batch.',
-    icon: FlaskConical
-  },
-  {
-    id: 'mfi-tester',
-    name: 'Melt Flow Index (MFI) Testing Station',
-    specs: ['Standard: ASTM D1238 / ISO 1133', 'Temperature Range: 50°C to 400°C', 'Weight Sets: 0.325 kg to 21.6 kg', 'Software: Digital auto-cut PC integration', 'Measurement Frequency: Every production batch'],
-    desc: 'All masterbatch batches undergo a 100% MFI test before release to confirm processability in customer pellet-fed extrusion lines — zero variation tolerance.',
-    icon: Thermometer
-  },
-  {
-    id: 'dispersion-test',
-    name: 'Optical Dispersion Microscope Station',
-    specs: ['Magnification: 100x to 2,000x', 'Filter Test: ΔP (Filter Pressure Value) Method', 'Standard: DVS/TM 2153 German Plastic Standard', 'Output: FPV grading (1-5) stamped per lot', 'Camera: Full HD digital capture'],
-    desc: 'Visual and quantitative dispersion grading performed per German DVS standard TM 2153. Each masterbatch lot receives an FPV stamp, assuring customers of gel-free, streak-free output.',
+    id: 'qc-testing',
+    name: 'Quality Control & Operational Load Bay',
+    specs: [
+      'Load Testing: 48-hour continuous cycle no-load simulator',
+      'Thermal Mapping: Heater band load audit and temperature PID checks',
+      'Hydraulic Audit: Verification of cycle pressure consistency (up to 200 Bar)',
+      'Verification Standard: Conformance to Indian & ISO machinery safety codes',
+      'Audit Release: Comprehensive 15-Point QC certificate generated per machine'
+    ],
+    desc: 'Every serviced or refurbished machine undergoes intense pressure and load trials. This ensures that when the machine arrives at your factory floor, it starts up smoothly with zero commissioning delays.',
     icon: ShieldCheck
   }
 ];
@@ -54,10 +77,10 @@ const InfrastructurePage = () => {
       {/* Hero */}
       <section className="infra-hero">
         <div className="container">
-          <span className="section-subtitle">Factory & Technical Equipment</span>
-          <h1 className="infra-hero-title">World-Class Manufacturing Infrastructure</h1>
+          <span className="section-subtitle">Workshop & Technical Facilities</span>
+          <h1 className="infra-hero-title">Technical Support &amp; Workshop Infrastructure</h1>
           <p className="infra-hero-desc">
-            Our Dadanagar, Kanpur manufacturing campus features over 40,000 sq. ft. of climate-controlled production halls equipped with state-of-the-art polymer compounding machinery from global OEMs.
+            Our Dadanagar, Kanpur technical campus features over 20,000 sq. ft. of heavy-duty testing bays, diagnostic workshops, electrical programming labs, and massive spare parts warehousing spaces.
           </p>
         </div>
       </section>
@@ -66,20 +89,20 @@ const InfrastructurePage = () => {
       <section className="infra-overview-section">
         <div className="container overview-grid glass-panel">
           <div className="overview-stat">
-            <span className="ov-number">40,000+</span>
-            <span className="ov-label">Sq. Ft. Production Campus</span>
+            <span className="ov-number">20,000+</span>
+            <span className="ov-label">Sq. Ft. Technical Campus</span>
           </div>
           <div className="overview-stat">
-            <span className="ov-number">12</span>
-            <span className="ov-label">Twin-Screw Compounding Lines</span>
+            <span className="ov-number">5</span>
+            <span className="ov-label">Specialized Overhauling Bays</span>
           </div>
           <div className="overview-stat">
-            <span className="ov-number">55,000 MT</span>
-            <span className="ov-label">Annual Rated Output</span>
+            <span className="ov-number">1,500+</span>
+            <span className="ov-label">Machines Repaired &amp; Serviced</span>
           </div>
           <div className="overview-stat">
             <span className="ov-number">100%</span>
-            <span className="ov-label">Batch QC Before Dispatch</span>
+            <span className="ov-label">15-Point QC Validation Done</span>
           </div>
         </div>
       </section>
@@ -88,10 +111,10 @@ const InfrastructurePage = () => {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <span className="section-subtitle">Technical Machinery</span>
-            <h2 className="section-title">Compounding Equipment Overview</h2>
+            <span className="section-subtitle">Technical Workshop</span>
+            <h2 className="section-title">Technical Support Facilities</h2>
             <p className="section-desc">
-              Premium compounding hardware sourced from leading German and Swiss OEM machinery manufacturers, configured for precision polymer blending.
+              State-of-the-art diagnostic tools, calibration lasers, heavy machinery overhauling bays, and deep inventory storage to cover all plastic processing units.
             </p>
           </div>
 
@@ -129,18 +152,18 @@ const InfrastructurePage = () => {
         <div className="container">
           <div className="section-header">
             <span className="section-subtitle">Quality Assurance</span>
-            <h2 className="section-title">Zero-Defect B2B Quality Gates</h2>
+            <h2 className="section-title">Zero-Defect 5-Stage Machinery Validation</h2>
             <p className="section-desc">
-              Every production lot passes through a mandatory 5-stage quality inspection protocol before truck dispatch — protecting our clients from line stoppages.
+              Every serviced or sold machine passes through a strict 5-stage diagnostic and run-test protocol before shipping to the client — ensuring maximum commissioning speed.
             </p>
           </div>
           <div className="qc-stages-timeline">
             {[
-              { step: '01', title: 'Raw Material Incoming QC', desc: 'All incoming TiO₂, pigments, and carriers undergo moisture checks, assay purity tests, and sieve analysis.' },
-              { step: '02', title: 'In-Process Melt Temperature Logs', desc: 'Barrel zone temperatures logged every 15 minutes against SOP control charts.' },
-              { step: '03', title: 'MFI & Density Testing (100%)', desc: 'Every single production batch is tested for Melt Flow Index and bulk density before packaging.' },
-              { step: '04', title: 'Optical Dispersion Grading (FPV)', desc: 'Representative pellet samples are filter-tested for agglomerate-free dispersion quality.' },
-              { step: '05', title: 'Color Release Certificate & COA', desc: 'Final spectrophotometric pass confirmed; Certificate of Analysis (COA) printed and attached before pallet dispatch.' },
+              { step: '01', title: 'Electrical & PLC Safety Audit', desc: 'Verify insulation values, safety interlocks, contactor functions, and load profiles on heating zones.' },
+              { step: '02', title: 'Hydraulic & Pressure Stability', desc: 'Test hydraulic pump displacement curves, monitor proportional valves, and audit system pressure up to 200 Bar.' },
+              { step: '03', title: 'Barrel & Screw Laser Alignment', desc: 'Perform double-axis laser measurement mapping to confirm coaxial alignment of motor, gearbox, screw, and barrel.' },
+              { step: '04', title: 'No-Load Simulation (48 Hrs)', desc: 'Run the machine continuously under simulated automatic cycles to check temperature stability, lubrication, and vibration levels.' },
+              { step: '05', title: 'Trial Extrusion Run & Release', desc: 'Execute a test production trial with raw polymer granules. Release detailed 15-Point QC Certificate before packing and dispatch.' },
             ].map((stage) => (
               <div key={stage.step} className="qc-stage-item glass-panel">
                 <span className="qc-step-badge">{stage.step}</span>

@@ -10,12 +10,13 @@
 
 /* Upper Utility Bar */
 .navbar-top-bar {
-  background: #0f172a;
-  color: #94a3b8;
+  background: linear-gradient(90deg, #080b14 0%, #0d0d0d 50%, #1a1200 100%);
+  color: #a07c10;
   font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+  letter-spacing: 0.03em;
 }
 
 .top-bar-container {
@@ -58,14 +59,15 @@
 }
 
 .navbar-logo {
-  height: 52px;
+  height: 60px;
   width: auto;
   transition: height var(--transition-smooth);
   display: block;
+  border-radius: 8px;
 }
 
 .navbar-header.scrolled .navbar-logo {
-  height: 44px;
+  height: 48px;
 }
 
 /* Desktop Routes Styling */
