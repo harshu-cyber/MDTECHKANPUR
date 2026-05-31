@@ -143,7 +143,7 @@ const Navbar = () => {
           <div className="nav-controls">
             <ThemeToggle />
             <Link to="/admin" className="btn btn-primary nav-cta-desktop">
-              🔑 Admin Login
+              🔐 Login
             </Link>
             {/* Mobile Menu Toggle Button */}
             <button className="mobile-toggle-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Navigation Menu">
