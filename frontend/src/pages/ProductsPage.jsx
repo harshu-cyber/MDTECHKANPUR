@@ -98,6 +98,11 @@ const ProductsPage = () => {
             {filteredProducts.map(product => (
               <div key={product.id} className="product-full-card glass-panel">
                 <div className="product-color-bar" style={{ background: product.colorCode }}></div>
+                {product.img && (
+                  <div className="product-card-image-wrapper">
+                    <img src={product.img} alt={product.name} className="product-card-image" loading="lazy" />
+                  </div>
+                )}
                 <div className="product-full-body">
                   <div className="product-full-header">
                     <div>
@@ -172,6 +177,11 @@ const ProductsPage = () => {
             </div>
 
             <div className="modal-body">
+              {selectedProduct.img && (
+                <div className="modal-product-image-wrapper">
+                  <img src={selectedProduct.img} alt={selectedProduct.name} className="modal-product-image" />
+                </div>
+              )}
               <p className="modal-full-desc">{selectedProduct.desc}</p>
 
               {/* Full Technical Properties Table */}
