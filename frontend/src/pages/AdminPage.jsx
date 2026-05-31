@@ -119,8 +119,11 @@ const AdminPage = () => {
     e.preventDefault();
     setLoginError('');
 
-    // Static Credentials validation
-    if (emailInput.toLowerCase() === 'admin@mdtech.com' && passwordInput === 'MDTechKanpur@2026') {
+    // Static Credentials validation loaded from Vite environment variables (.env)
+    const envEmail = import.meta.env.VITE_ADMIN_EMAIL || 'admin@mdtech.com';
+    const envPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'MDTechKanpur@2026';
+
+    if (emailInput.toLowerCase() === envEmail.toLowerCase() && passwordInput === envPassword) {
       sessionStorage.setItem('admin_auth', 'true');
       setIsLoggedIn(true);
     } else {
