@@ -142,9 +142,9 @@ const Navbar = () => {
           {/* Right Action Controls (Theme, B2B CTA) */}
           <div className="nav-controls">
             <ThemeToggle />
-            <a href="tel:7499645819" className="btn btn-primary nav-cta-desktop">
-              📞 Call Now
-            </a>
+            <Link to="/admin" className="btn btn-primary nav-cta-desktop">
+              🔑 Admin Login
+            </Link>
             {/* Mobile Menu Toggle Button */}
             <button className="mobile-toggle-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Navigation Menu">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
