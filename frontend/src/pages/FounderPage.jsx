@@ -8,11 +8,13 @@ import {
   Cpu, 
   Users, 
   Briefcase, 
-  GraduationCap, 
   HeartHandshake, 
-  ChevronRight,
   MessageSquare,
-  Globe
+  Factory,
+  Layers,
+  Package,
+  Zap,
+  CheckCircle2
 } from 'lucide-react';
 import './FounderPage.css';
 
@@ -204,7 +206,126 @@ const FounderPage = () => {
         </div>
       </section>
 
-      {/* 4. Interactive Call to Action */}
+      {/* 4. Industrial Specializations & Factory Contract Services */}
+      <section className="specs-section section-bg-alt">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-subtitle">Industrial Operations</span>
+            <h2 className="section-title">Our Specializations &amp; Services</h2>
+            <p className="section-desc">
+              Running Plastic Masterbatch and Injection Moulding machines safely and efficiently through our skilled technical team — delivering new colour development tailored to live market demand.
+            </p>
+          </div>
+
+          <div className="specs-grid">
+
+            {/* Left Block: Masterbatch Colour Range */}
+            <div className="spec-block glass-panel" style={{ padding: '2.5rem' }}>
+              <h3 className="spec-block-title">
+                <Layers size={26} />
+                Masterbatch Colour Range
+              </h3>
+              <p className="spec-paragraph">
+                We manufacture and supply a comprehensive range of high-performance colour and functional masterbatches, developed in-house by our skilled R&amp;D team as per current market demand and customer specifications.
+              </p>
+              <div className="hindi-quote">
+                मास्टर बैच के नये कलर डेवलपमेंट — मार्केट डिमांड पर
+              </div>
+              <ul className="spec-list">
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Filler MB</span>
+                    <span className="spec-category-desc">Cost-effective calcium carbonate filler masterbatches</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Pearl Colour MB</span>
+                    <span className="spec-category-desc">Premium pearlescent shimmer effects for packaging</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Fluorescent Colour MB</span>
+                    <span className="spec-category-desc">Vivid, high-visibility fluorescent pigment batches</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Marble MB</span>
+                    <span className="spec-category-desc">Natural stone-effect aesthetic masterbatches</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Engineering Colour MB</span>
+                    <span className="spec-category-desc">High-heat, UV-stable grades for technical applications</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Block: Factory Specializations & Contract Services */}
+            <div className="spec-block glass-panel" style={{ padding: '2.5rem' }}>
+              <h3 className="spec-block-title">
+                <Factory size={26} />
+                Factory Contract &amp; Specialist Services
+              </h3>
+              <p className="spec-paragraph">
+                We are specialists in running plastic processing machinery at customer factories on a contract basis. Our skilled team operates Injection Moulding and Masterbatch machines safely, ensuring consistent quality output across production shifts.
+              </p>
+              <div className="hindi-quote">
+                सभी फैक्ट्रियों में ठेके पर Ready Mix Colour का काम करते हैं
+              </div>
+              <ul className="spec-list">
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Household Products</span>
+                    <span className="spec-category-desc">Colour matching for buckets, containers &amp; daily-use plastics</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">House Wire</span>
+                    <span className="spec-category-desc">Insulation-grade colour masterbatches for electrical wiring</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Thermoware</span>
+                    <span className="spec-category-desc">High-heat-resistant colours for casseroles &amp; thermoware</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Ready Mix Colour</span>
+                    <span className="spec-category-desc">On-site contract colour blending for any factory requirement</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">New Colour Development</span>
+                    <span className="spec-category-desc">Custom shade formulation as per client samples &amp; RAL codes</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Interactive Call to Action */}
       <section className="founder-cta-section">
         <div className="container">
           <div className="founder-cta-box">

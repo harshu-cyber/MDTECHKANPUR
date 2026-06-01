@@ -128,16 +128,38 @@ const Footer = () => {
 
       {/* Bottom Deck */}
       <div className="footer-bottom-deck">
-        <div className="container bottom-deck-container">
-          <p className="copyright-text">
-            © {currentYear} <strong>MD TechKanpur</strong>. All rights reserved.
-            &nbsp;·&nbsp; Kanpur's Trusted Plastic Machinery Partner
-            &nbsp;·&nbsp; <Link to="/admin" style={{ color: 'var(--accent-primary)', fontWeight: 'bold' }}>Admin Portal</Link>
-          </p>
-          <div className="bottom-tags">
-            <span className="compliance-tag">Sales &amp; Service</span>
-            <span className="compliance-tag">AMC Available</span>
-            <span className="compliance-tag">Genuine Spare Parts</span>
+        <div className="container">
+          {/* Row 1: copyright + compliance tags */}
+          <div className="bottom-deck-top">
+            <p className="copyright-text">
+              © {currentYear} <strong>MD TechKanpur</strong>. All rights reserved.
+              &nbsp;·&nbsp; Kanpur's Trusted Plastic Machinery Partner
+            </p>
+            <div className="bottom-tags">
+              <span className="compliance-tag">Sales &amp; Service</span>
+              <span className="compliance-tag">AMC Available</span>
+              <span className="compliance-tag">Genuine Spare Parts</span>
+            </div>
+          </div>
+
+          {/* Row 2: Made with credit — pinned to the left */}
+          <div className="footer-credit-row">
+            <span className="footer-maker">
+              Made with <span role="img" aria-label="heart">❤️</span> and love by Brajwasi's Coders
+            </span>
+            {/* Inline SVG circular BC logo */}
+            <span className="footer-bc-logo" title="Brajwasi's Coders">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="22" height="22">
+                <circle cx="18" cy="18" r="18" fill="#0d0d1a"/>
+                <circle cx="18" cy="18" r="17" fill="none" stroke="#c9a227" strokeWidth="0.8"/>
+                {/* B letter */}
+                <text x="6" y="23" fontFamily="Georgia, serif" fontSize="14" fontWeight="bold" fill="#4a8fff">B</text>
+                {/* code symbol */}
+                <text x="14.5" y="21" fontFamily="monospace" fontSize="7" fill="#c9a227">&lt;/&gt;</text>
+                {/* C letter */}
+                <text x="24" y="23" fontFamily="Georgia, serif" fontSize="14" fontWeight="bold" fill="#c9a227">C</text>
+              </svg>
+            </span>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, MapPin, Wrench, ShoppingCart, Shield, Zap, Star, ChevronRight, Settings, Cpu } from 'lucide-react';
+import { ArrowRight, Phone, MapPin, Wrench, ShoppingCart, Shield, Zap, Star, ChevronRight, Settings, Cpu, Factory, Layers, Package, CheckCircle2 } from 'lucide-react';
 import './Home.css';
 
 /* ─── Animated Counter Hook ─── */

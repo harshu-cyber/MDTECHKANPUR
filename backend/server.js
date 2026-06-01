@@ -8,6 +8,7 @@ import winston from "winston";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import mongoose from "mongoose";
 
 // Resolve directory paths for logging in ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -208,8 +209,29 @@ app.use((err, req, res, next) => {
 });
 
 // ==========================================
-// 6. Server Initialization
+// 6. MongoDB Database Connection & Server Initialization
 // ==========================================
+const mongoURI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/mdtechkanpur";
+
+// Configure strictQuery to prepare for Mongoose deprecations
+mongoose.set("strictQuery", true);
+
+const connectDatabase = async () => {
+  try {
+    const conn = await mongoose.connect(mongoURI);
+    logger.info(`MongoDB connected successfully: ${conn.connection.host}/${conn.connection.name}`);
+  } catch (error) {
+    logger.error(`Database connection failure: ${error.stack || error.message}`);
+    // If in production, terminate process immediately because database is critical
+    if (isProduction) {
+      process.exit(1);
+    }
+  }
+};
+
+// Start both Database connection and Web server
+await connectDatabase();
+
 const server = app.listen(port, () => {
   logger.info(`Secure production server initiated on port ${port} [Environment: ${isProduction ? "production" : "development"}]`);
 });
@@ -224,8 +246,14 @@ process.on("unhandledRejection", (reason, promise) => {
   logger.error("CRITICAL: Unhandled Promise Rejection at: %O, reason: %s", promise, reason);
 });
 
-process.on("SIGTERM", () => {
-  logger.info("SIGTERM signal received. Initiating graceful shutdown of web services...");
+process.on("SIGTERM", async () => {
+  logger.info("SIGTERM signal received. Initiating graceful shutdown of services...");
+  try {
+    await mongoose.connection.close();
+    logger.info("MongoDB connection closed gracefully.");
+  } catch (err) {
+    logger.error("Error during MongoDB disconnection: %s", err.message);
+  }
   server.close(() => {
     logger.info("HTTP servers closed. Secure shutdown sequence complete.");
     process.exit(0);

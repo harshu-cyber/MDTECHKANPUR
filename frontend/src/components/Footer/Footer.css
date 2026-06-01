@@ -57,6 +57,28 @@
   padding: 4px;
 }
 
+/* Small version of the Brajwasi Coders logo used in the footer credit */
+.footer-coders-logo-small {
+  height: 14px;
+  width: auto;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Circular wrapper for the logo in the footer credit */
+.footer-logo-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff; /* optional background to match footer */
+  margin-left: 4px;
+}
+
+
 .brand-summary {
   font-size: 0.88rem;
   color: #7a7062;
@@ -268,21 +290,54 @@
   z-index: 2;
 }
 
-.bottom-deck-container {
+.bottom-deck-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;
 }
 
 .copyright-text {
-  font-size: 0.8rem;
-  color: #3a3830;
+  font-size: 0.82rem;
+  color: rgba(212, 201, 176, 0.6); /* warmer goldish-white tint, beautiful contrast */
+  margin: 0;
 }
 
 .copyright-text strong {
   color: #c9a227;
+}
+
+.footer-credit-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(201, 162, 39, 0.08);
+  width: 100%;
+}
+
+.footer-maker {
+  font-size: 0.8rem;
+  color: rgba(212, 201, 176, 0.5); /* elegant secondary tint */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footer-bc-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-bc-logo:hover {
+  transform: scale(1.15) rotate(8deg);
 }
 
 .bottom-tags {
@@ -317,11 +372,17 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .bottom-deck-container {
+  .bottom-deck-top {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
   }
   .bottom-tags {
     justify-content: center;
+  }
+  .footer-credit-row {
+    justify-content: center;
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
   }
 }

@@ -294,7 +294,94 @@
   line-height: 1.6;
 }
 
-/* 3. Core Leadership Values */
+/* 3. Industrial Specializations & Factory Operations */
+.specs-section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: 3rem;
+}
+
+.spec-block {
+  height: 100%;
+}
+
+.spec-block-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.spec-block-title svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.spec-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.hindi-quote {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(201, 162, 39, 0.04);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+.spec-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.spec-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.spec-list-item svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.spec-category-tag {
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+}
+
+.spec-category-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 4. Core Leadership Values */
 .values-section {
   padding: 6.5rem 0;
   background-color: var(--bg-secondary);
@@ -428,6 +515,13 @@
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .spec-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -447,6 +541,13 @@
     font-size: 2rem;
   }
   .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .spec-list {
     grid-template-columns: 1fr;
   }
   .founder-cta-box {
