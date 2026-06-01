@@ -61,6 +61,9 @@ const Navbar = () => {
             <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
               Corporate Profile
             </NavLink>
+            <NavLink to="/founder" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+              Our Team
+            </NavLink>
             
             {/* Products with Mega Dropdown Hover */}
             <div 
@@ -169,6 +172,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
             Corporate Profile
+          </NavLink>
+          <NavLink to="/founder" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+            Our Team
           </NavLink>
           <NavLink to="/products" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
             Machinery &amp; Products

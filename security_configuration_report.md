@@ -1,0 +1,141 @@
+# MD TechKanpur — Production Security & DNS Configuration Report
+
+This report outlines the comprehensive security configurations and deployment settings implemented for the **MD TechKanpur** website. It includes the active server-hardening codes, static deployment manifests, a secure **DNS configuration guide** (with copy-paste records), backup instructions, and a **post-deployment security audit checklist** to keep the platform secure by default once it goes live.
+
+---
+
+## 📋 Security Configuration & DNS Checklist
+
+Here is a summary of the implemented security layers and the actions that must be completed after deploying the website to production.
+
+| Security Layer | Status | Action Required / Completed |
+| :--- | :--- | :--- |
+| **HTTP to HTTPS Redirect** | **Configured** | Handled natively by Nginx (`nginx.conf`), Vercel, or Netlify configurations. |
+| **Secure HTTP Headers** | **Configured** | Handled by **Helmet** in Express backend, plus Vercel/Netlify deployment manifests. |
+| **B2B API Rate Limiting** | **Configured** | Limits set to **100 requests per 15 minutes** per IP to defend against brute-force. |
+| **Secure Session Cookies** | **Configured** | Express cookies set with `HttpOnly`, `Secure` (in prod), and `SameSite=Strict`. |
+| **Information Concealment** | **Configured** | Disabled `X-Powered-By` headers in Node and `server_tokens` (version) in Nginx. |
+| **Structured Production Logs** | **Configured** | **Winston** configured to log all app traces to `logs/app.log` and `logs/error.log`. |
+| **Deployment Manifests** | **Created** | Created secure [vercel.json](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/frontend/vercel.json) and [netlify.toml](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/frontend/netlify.toml) manifests. |
+| **Nginx Hardening Configuration**| **Created** | Created secure reverse-proxy, TLS 1.3, and HSTS template in [nginx.conf](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/infra/nginx.conf). |
+| **Automated Backups** | **Created** | Created automated Gzip codebase backing and rotation script in [backup.sh](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/infra/backup.sh). |
+| **Secure DNS Configuration** | **Action Needed** | Configure SPF, DKIM, DMARC, CAA, and DNSSEC records in your domain registrar panel. |
+| **Environment Variables** | **Action Needed** | Deploy real secrets for `COOKIE_SECRET`, `NODE_ENV=production`, and restricted `CORS_ORIGIN`. |
+
+---
+
+## 🔒 1. Secure DNS Configuration Guide
+
+To protect the **mdtechkanpur.com** domain from spoofing, phishing, and hijacking, configure these DNS records in your domain registrar panel (e.g., Cloudflare, GoDaddy, Namecheap).
+
+### A. SPF (Sender Policy Framework) - TXT Record
+Prevents email spoofing by authorizing specific mail servers to send emails on behalf of your domain.
+* **Type**: `TXT`
+* **Host/Name**: `@` (or `mdtechkanpur.com`)
+* **Value (If using Google Workspace)**: `v=spf1 mx a include:_spf.google.com ~all`
+* **Value (Standard Domain Direct - No Mail server)**: `v=spf1 -all` *(Blocks all sending, highly secure if domain does not send emails)*
+
+### B. DKIM (DomainKeys Identified Mail) - TXT Record
+Cryptographically signs outgoing emails, verifying that the email was actually sent by the domain owner and has not been altered in transit.
+* **Type**: `TXT`
+* **Host/Name**: `google._domainkey` (or selector name provided by your mail provider)
+* **Value**: `v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...[YOUR_PUBLIC_KEY]...` *(Obtain this key inside your email hosting console, e.g., Google Workspace Admin)*
+
+### C. DMARC (Domain-based Message Authentication) - TXT Record
+Defines the strict enforcement policy for emails that fail SPF or DKIM checks. In production, we use the `reject` policy to block spoofed emails entirely.
+* **Type**: `TXT`
+* **Host/Name**: `_dmarc` (or `_dmarc.mdtechkanpur.com`)
+* **Value**: `v=DMARC1; p=reject; pct=100; rua=mailto:security@mdtechkanpur.com; ruf=mailto:security@mdtechkanpur.com; fo=1`
+  * `p=reject`: Instructs recipient servers to reject/block unauthorized emails.
+  * `rua`: The email address where daily aggregate XML security reports are sent.
+
+### D. CAA (Certification Authority Authorization) - CAA Record
+Restricts which Certificate Authorities (CAs) are allowed to issue SSL certificates for your domain, defending against unauthorized certificate generation.
+* **Type**: `CAA`
+* **Host/Name**: `@`
+* **Values (Allowing only Let's Encrypt and Cloudflare)**:
+  * `0 issue "letsencrypt.org"`
+  * `0 issuewild "letsencrypt.org"`
+  * `0 issue "cloudflare.com"`
+
+### E. DNSSEC (DNS Security Extensions)
+Prevents DNS spoofing and cache poisoning by cryptographically signing your DNS records.
+* **Action Required**: Navigate to your Domain Registrar dashboard, look for **DNSSEC**, and click **Enable/Activate**. If using a custom DNS provider (like Cloudflare), copy the **DS Record** values generated by Cloudflare and paste them into your registrar's DNSSEC config.
+
+---
+
+## 🛠️ 2. Production Deployment Manifests
+
+To ensure static hostings deliver the front-end pages securely, we have provided two deployment manifests containing production-grade HTTP security headers:
+
+### HSTS & Headers configured:
+* **HSTS (Strict-Transport-Security)**: Forces browser connections over HTTPS for 2 years (`max-age=63072000; includeSubDomains; preload`).
+* **Content-Security-Policy (CSP)**: Locks script, font, and style sources. Vite SPA builds are allowed to load styles, fonts from Google Fonts, and communicate securely with the production backend API.
+* **X-Frame-Options (DENY)**: Prevents clickjacking by completely blocking frames.
+* **X-Content-Type-Options (nosniff)**: Blocks browsers from executing assets unless MIME types match exactly.
+* **Permissions-Policy**: Prohibits hardware probes (camera, mic, USB, geolocation) on client devices.
+
+---
+
+## ⚙️ 3. Server Infrastructure Hardening (Nginx)
+
+The secure Nginx configuration in [infra/nginx.conf](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/infra/nginx.conf) performs reverse proxying to the Node backend. Key configurations include:
+* **HTTPS Redirect**: Captures Port 80 traffic and permanently redirects it to Port 443 HTTPS.
+* **Modern TLS Ciphers**: Configures **TLS 1.2 and TLS 1.3 only** using secure Elliptic Curve ciphers. Older, vulnerable protocols (TLS 1.0, SSLv2, SSLv3) are fully disabled.
+* **Perfect Forward Secrecy**: Integrates Diffie-Hellman parameters (`ssl_dhparam`) to prevent past sessions from being decrypted even if the server key is compromised.
+* **OCSP Stapling**: Enables stapling of SSL status to speed up TLS handshakes for visitors.
+* **Server Hiding**: Hides Nginx software signature versions (`server_tokens off;`).
+
+---
+
+## 💾 4. Automated Backup Schedule
+
+The backup script [infra/backup.sh](file:///c:/Users/harsh/OneDrive/Desktop/MDTECHKANPUR/infra/backup.sh) generates compressed archives of code, assets, and configurations (excluding `node_modules` and local log files) to conserve disk space.
+
+### Cron Integration (Run Daily at 2:00 AM)
+To schedule this script on your Linux production server:
+1. Log into your server terminal as root or sudoer.
+2. Open the cron editor: `crontab -e`
+3. Add the following line at the bottom:
+   ```bash
+   0 2 * * * /var/www/mdtechkanpur/infra/backup.sh > /dev/null 2>&1
+   ```
+4. Save and exit. The script will compress the site daily, log the status, and automatically delete archives older than 30 days.
+
+---
+
+## 🛡️ 5. OWASP Top 10 Risk Mapping
+
+Our production security implementation aligns directly with the industry-standard **OWASP Top 10 Web Application Security Risks**:
+
+* **A01:2021-Broken Access Control**: Cookies are protected with the `httpOnly` flag (inaccessible via JavaScript `document.cookie`, preventing cookie theft) and the `SameSite=Strict` flag (CSRF protection).
+* **A03:2021-Injection**: Secure **Content-Security-Policy (CSP)** prevents malicious code injection. Body parsing size boundaries (limited to `10kb` payloads) prevent buffer overflow attacks.
+* **A04:2021-Insecure Design**: Rate limiting limits requests to **100 per 15 minutes** per IP, preventing brute-force and credential stuffing.
+* **A05:2021-Security Misconfiguration**: Disabled server powered-by headers, disabled Nginx software versions, secure CORS whitelists, and enforced HTTPS redirects.
+* **A06:2021-Vulnerable and Outdated Components**: All dependencies audited clean with **0 vulnerabilities**.
+* **A09:2021-Security Logging and Monitoring Failures**: Configured **Winston** structured logging to generate persistent log files (`app.log` and `error.log`) with precise timestamps and log levels, combined with **Morgan** trace integration.
+
+---
+
+## 🏁 6. Post-Deployment Action Items
+
+Once the website goes live, the system administrator **MUST** execute these manual verification steps:
+
+1. **Obtain SSL Certificate via Certbot**:
+   Run Let's Encrypt Certbot to map certs to the paths defined in `nginx.conf`:
+   ```bash
+   sudo certbot --nginx -d mdtechkanpur.com -d www.mdtechkanpur.com
+   ```
+2. **Generate Diffie-Hellman Parameters**:
+   Create the parameters in the location specified in `nginx.conf`:
+   ```bash
+   sudo mkdir -p /etc/nginx/ssl
+   sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+   ```
+3. **Configure Environment Variables**:
+   In your host environment (e.g. PM2, Systemd, Heroku, or `.env` file), deploy:
+   - `NODE_ENV=production`
+   - `CORS_ORIGIN=https://mdtechkanpur.com`
+   - `COOKIE_SECRET=[secure_long_random_entropy_string]`
+4. **Audit HTTP Security Headers**:
+   Once the site is live, input your domain into [Mozilla Observatory](https://observatory.mozilla.org/) or [SecurityHeaders.com](https://securityheaders.com/) to confirm an **A+ Rating** is achieved.

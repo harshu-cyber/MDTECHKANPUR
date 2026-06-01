@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Home from '../pages/Home';
 import AboutPage from '../pages/AboutPage';
+import FounderPage from '../pages/FounderPage';
 import ProductsPage from '../pages/ProductsPage';
 import InfrastructurePage from '../pages/InfrastructurePage';
 import ContactPage from '../pages/ContactPage';
@@ -19,6 +20,7 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/founder" element={<FounderPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/infrastructure" element={<InfrastructurePage />} />
         <Route path="/contact" element={<ContactPage />} />
