@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Award, 
-  ShieldCheck, 
-  Cpu, 
-  Users, 
-  Briefcase, 
-  HeartHandshake, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Award,
+  ShieldCheck,
+  Cpu,
+  Users,
+  Briefcase,
+  HeartHandshake,
   MessageSquare,
   Factory,
   Layers,
@@ -35,18 +35,18 @@ const FounderPage = () => {
       {/* 2. Main Biography & Profile Showcase */}
       <section className="section">
         <div className="container founder-profile-grid">
-          
+
           {/* Left Column: Premium Interactive Headshot Card */}
           <div className="founder-image-card">
             <div className="founder-img-frame">
-              <img 
-                src="/founder.png" 
-                alt="Ajay Kumar Srivastava — Founder & CEO" 
+              <img
+                src="/founder.jpg"
+                alt="Ajay Kumar Srivastava — Founder & R&D"
                 className="founder-profile-pic"
               />
               <div className="founder-img-badge">
                 <span className="badge-name">Ajay Kumar Srivastava</span>
-                <span className="badge-title">Founder &amp; CEO</span>
+                <span className="badge-title">Founder &amp; R&amp;D</span>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const FounderPage = () => {
             <div className="founder-meta-info">
               <div className="meta-detail-row">
                 <Briefcase size={16} />
-                <span>Plastic Machinery Specialist</span>
+                <span>Plastic & Rubber Colour Specialist</span>
               </div>
               <div className="meta-detail-row">
                 <Phone size={16} />
@@ -74,9 +74,9 @@ const FounderPage = () => {
           {/* Right Column: Narrative, Executive Message & Milestones */}
           <div className="founder-bio">
             <div className="founder-message-box">
-              <span className="founder-message-tag">Founder &amp; CEO Message</span>
+              <span className="founder-message-tag">Founder &amp; R&amp;D Message</span>
               <h2 className="founder-message-heading">Sincerity, Quality &amp; Unmatched Reliability</h2>
-              
+
               <div className="executive-quote">
                 "Our industrial partners do not just buy machinery; they invest in uptime, production reliability, and operational trust. At MD TechKanpur, we calibrate every single screw, barrel, and servo-hydraulic system to ensure peak performance with minimum energy consumption."
               </div>
@@ -99,9 +99,9 @@ const FounderPage = () => {
               <h3 className="timeline-section-title">
                 <Award size={22} /> Professional Milestones
               </h3>
-              
+
               <div className="founder-timeline">
-                
+
                 <div className="timeline-item">
                   <div className="timeline-dot" />
                   <span className="timeline-year">2022 – Present</span>
@@ -157,7 +157,7 @@ const FounderPage = () => {
           </div>
 
           <div className="values-grid">
-            
+
             {/* Value 1: Sincerity & Honesty */}
             <div className="value-card glass-panel">
               <div className="value-icon-box">
@@ -293,8 +293,8 @@ const FounderPage = () => {
                 <li className="spec-list-item">
                   <CheckCircle2 size={16} />
                   <div>
-                    <span className="spec-category-tag">House Wire</span>
-                    <span className="spec-category-desc">Insulation-grade colour masterbatches for electrical wiring</span>
+                    <span className="spec-category-tag">Housewares</span>
+                    <span className="spec-category-desc">Premium, food-grade colour masterbatches for kitchenware and utility products</span>
                   </div>
                 </li>
                 <li className="spec-list-item">
@@ -302,6 +302,13 @@ const FounderPage = () => {
                   <div>
                     <span className="spec-category-tag">Thermoware</span>
                     <span className="spec-category-desc">High-heat-resistant colours for casseroles &amp; thermoware</span>
+                  </div>
+                </li>
+                <li className="spec-list-item">
+                  <CheckCircle2 size={16} />
+                  <div>
+                    <span className="spec-category-tag">Rubber, Shoe Sole &amp; Toys</span>
+                    <span className="spec-category-desc">Dedicated color development for rubber goods, shoe soles, and plastic toy manufacturing</span>
                   </div>
                 </li>
                 <li className="spec-list-item">
@@ -336,12 +343,12 @@ const FounderPage = () => {
             <p className="cta-box-desc">
               Have questions regarding plastic extruders, custom screw and barrel designs, breakdown diagnostics, or long-term AMC setups? Discuss your B2B requirements directly with Ajay Kumar Srivastava.
             </p>
-            
+
             <div className="cta-btn-group">
-              <a 
+              <a
                 href="https://wa.me/917499645819?text=Hello%20Ajay%20ji%2C%20I%20want%20to%20discuss%20a%20plastic%20machinery%20requirement%20for%20my%20factory."
-                target="_blank" 
-                rel="noopener noreferrer" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
               >
                 Discuss on WhatsApp

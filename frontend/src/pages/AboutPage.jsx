@@ -11,7 +11,7 @@ const AboutPage = () => {
           <span className="section-subtitle">Corporate Profile</span>
           <h1 className="about-hero-title">MD TechKanpur Machinery</h1>
           <p className="about-hero-desc">
-            For over 15 years, we have been providing technical precision, factory-grade servicing, and premium sales support for plastic converting machinery across Kanpur and northern India.
+            For over 20 years, we have been providing technical precision, factory-grade servicing, and premium sales support for plastic converting machinery across Kanpur and northern India.
           </p>
         </div>
       </section>

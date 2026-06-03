@@ -40,7 +40,7 @@ const Navbar = () => {
           </div>
           <div className="top-bar-item flex-right">
             <Award size={13} color="var(--accent-primary)" />
-            <span>📞 7499645819 &nbsp;|&nbsp; Plastic Machinery Specialist</span>
+            <span>📞 7499645819 &nbsp;|&nbsp; Plastic Colour Specialist</span>
           </div>
         </div>
       </div>

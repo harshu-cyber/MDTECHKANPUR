@@ -124,7 +124,7 @@ const Home = () => {
     return () => clearTimeout(t);
   }, []);
 
-  const yearsCount   = useCounter(15, 1500, statsInView);
+  const yearsCount   = useCounter(20, 1500, statsInView);
   const clientsCount = useCounter(500, 1800, statsInView);
   const machinesCount = useCounter(1200, 2000, statsInView);
   const citiesCount  = useCounter(30, 1400, statsInView);
@@ -145,7 +145,7 @@ const Home = () => {
             {/* Badge */}
             <div className="hero-badge">
               <span className="badge-dot-pulse" />
-              <span>Kanpur's #1 Plastic Machinery Dealer</span>
+              <span>Kanpur's #1 Plastic Machinery Contractor</span>
             </div>
 
             <h1 className="hero-main-title">
@@ -154,7 +154,7 @@ const Home = () => {
             </h1>
 
             <p className="hero-description">
-              Your trusted partner for <strong>Plastic Machinery Sales, Service & Spare Parts</strong> in Kanpur.
+              Your trusted partner for <strong>Plastic Color Masterbatch, Plastic Compounds, Engineering Compounds, Engineering Color Masterbatch, Multilayer, and all Plastic Additives</strong> in Kanpur.
               Extruders · Injection Moulding · Auxiliary Equipment — all under one roof.
             </p>
 
@@ -345,7 +345,7 @@ const Home = () => {
               Kanpur's Most Trusted<br />Machinery Experts
             </h2>
             <p className="section-desc" style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-              With over 15 years in the plastic machinery industry, we bring unmatched technical expertise,
+              With over 20 years in the plastic machinery industry, we bring unmatched technical expertise,
               genuine spare parts, and round-the-clock support to keep your production lines running.
             </p>
             <div className="why-features">
@@ -372,7 +372,7 @@ const Home = () => {
                 <img src="/img-banner.jpg" alt="MD TechKanpur plastic machinery" />
               </div>
               <div className="why-floating-badge">
-                <span className="wfb-num">15+</span>
+                <span className="wfb-num">20+</span>
                 <span className="wfb-lbl">Years of<br />Excellence</span>
               </div>
               <div className="why-floating-cert glass-panel-dark">
