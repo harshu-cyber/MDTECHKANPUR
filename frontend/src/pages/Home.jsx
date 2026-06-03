@@ -200,7 +200,7 @@ const Home = () => {
                 </div>
                 <div className="info-contact-row">
                   <MapPin size={14} />
-                  <span>525 K, Barra Vishwa Bank, Kanpur</span>
+                  <span>526 K, Barra Vishwa Bank, Kanpur</span>
                 </div>
               </div>
             </div>
@@ -424,7 +424,7 @@ const Home = () => {
         <div className="container cta-strip-inner">
           <div className="cta-strip-text">
             <h2 className="cta-strip-title">Ready to upgrade your production line?</h2>
-            <p className="cta-strip-sub">Call us today or visit our office at 525 K, Barra Vishwa Bank, Kanpur.</p>
+            <p className="cta-strip-sub">Call us today or visit our office at 526 K, Barra Vishwa Bank, Kanpur.</p>
           </div>
           <div className="cta-strip-actions">
             <a href="tel:7499645819" className="btn btn-primary btn-large">

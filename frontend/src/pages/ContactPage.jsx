@@ -98,7 +98,7 @@ const ContactPage = () => {
               <div className="info-icon-wrapper"><MapPin size={20} /></div>
               <div>
                 <span className="info-card-label">Office Address</span>
-                <p className="info-card-value">525 K, Barra Vishwa Bank,<br />Kanpur, Uttar Pradesh, India</p>
+                <p className="info-card-value">526 K, Barra Vishwa Bank,<br />Kanpur, Uttar Pradesh, India</p>
               </div>
             </div>
 

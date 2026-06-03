@@ -54,7 +54,7 @@ const FounderPage = () => {
             <div className="founder-meta-info">
               <div className="meta-detail-row">
                 <Briefcase size={16} />
-                <span>Plastic & Rubber Colour Specialist</span>
+                <span>Specialist in Plastic All Colours , HouseHold & HouseWare , Tarpuline Laminations Rafia , Engineering Colour Compounds and Rubber Colours etc</span>
               </div>
               <div className="meta-detail-row">
                 <Phone size={16} />
