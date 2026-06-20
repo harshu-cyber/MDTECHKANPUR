@@ -61,3 +61,37 @@ export const generateWhatsAppLink = ({ productName, companyName, contactName }) 
   );
   return `https://wa.me/${phone}?text=${message}`;
 };
+
+/**
+ * Fetch all customer reviews.
+ * @returns {Promise<Array>} - List of reviews
+ */
+export const getReviews = async () => {
+  const response = await fetch("/api/reviews");
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error || "Failed to fetch reviews.");
+  }
+  return data;
+};
+
+/**
+ * Submit a new customer review.
+ * @param {Object} reviewData - The review form payload
+ * @returns {Promise<Object>} - The saved review
+ */
+export const submitReview = async (reviewData) => {
+  const response = await fetch("/api/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reviewData),
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error || "Failed to submit review.");
+  }
+  return data.review;
+};

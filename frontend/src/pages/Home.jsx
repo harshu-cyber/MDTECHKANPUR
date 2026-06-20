@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, MapPin, Wrench, ShoppingCart, Shield, Zap, Star, ChevronRight, Settings, Cpu, Factory, Layers, Package, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Phone, MapPin, Wrench, ShoppingCart, Shield, Zap, Star, ChevronRight, Settings, Cpu, Factory, Layers, Package, CheckCircle2, X } from 'lucide-react';
+import { getReviews, submitReview } from '../services/api';
 import './Home.css';
 
 /* ─── Animated Counter Hook ─── */
@@ -118,11 +119,58 @@ const testimonials = [
 const Home = () => {
   const [statsRef, statsInView] = useInView(0.3);
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [allReviews, setAllReviews] = useState(testimonials);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ name: '', company: '', rating: 5, quote: '' });
+  const [reviewStatus, setReviewStatus] = useState('idle'); // idle | loading | success | error
+  const [reviewError, setReviewError] = useState('');
 
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 100);
     return () => clearTimeout(t);
   }, []);
+
+  // Fetch reviews on mount
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const dbReviews = await getReviews();
+        // Merge fetched reviews first, then default static testimonials
+        setAllReviews([...dbReviews, ...testimonials]);
+      } catch (err) {
+        console.error("Failed to load reviews:", err);
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  const handleReviewChange = (e) => {
+    const { name, value } = e.target;
+    setReviewForm(prev => ({ ...prev, [name]: name === 'rating' ? parseInt(value, 10) : value }));
+  };
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    if (!reviewForm.name.trim() || !reviewForm.company.trim() || !reviewForm.quote.trim()) {
+      setReviewError('Please fill in all fields.');
+      return;
+    }
+    setReviewStatus('loading');
+    setReviewError('');
+    try {
+      const savedReview = await submitReview(reviewForm);
+      setAllReviews(prev => [savedReview, ...prev]);
+      setReviewStatus('success');
+      setReviewForm({ name: '', company: '', rating: 5, quote: '' });
+      setTimeout(() => {
+        setShowReviewModal(false);
+        setReviewStatus('idle');
+      }, 2000);
+    } catch (err) {
+      setReviewStatus('error');
+      setReviewError(err.message || 'Failed to submit review. Please try again.');
+    }
+  };
 
   const yearsCount   = useCounter(20, 1500, statsInView);
   const clientsCount = useCounter(500, 1800, statsInView);
@@ -389,17 +437,24 @@ const Home = () => {
           ═══════════════════════════════════════ */}
       <section className="section testimonials-section">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header testimonials-header" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div className="gold-divider" />
             <span className="section-subtitle">Client Stories</span>
             <h2 className="section-title">What Our Clients Say</h2>
+            <button 
+              className="btn btn-outline-gold write-review-btn" 
+              style={{ marginTop: '1rem', padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}
+              onClick={() => setShowReviewModal(true)}
+            >
+              Write a Review
+            </button>
           </div>
 
           <div className="testimonials-grid">
-            {testimonials.map((t) => (
-              <div key={t.id} className="testimonial-card glass-panel">
+            {allReviews.map((t, index) => (
+              <div key={t._id || t.id || index} className="testimonial-card glass-panel">
                 <div className="tcard-stars">
-                  {'★'.repeat(t.rating)}
+                  {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
                 </div>
                 <p className="tcard-quote">"{t.quote}"</p>
                 <div className="tcard-profile">
@@ -438,6 +493,106 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════
+          WRITE A REVIEW MODAL
+          ═══════════════════════════════════════ */}
+      {showReviewModal && (
+        <div className="review-modal-backdrop" onClick={() => setShowReviewModal(false)}>
+          <div className="review-modal-content glass-panel" onClick={(e) => e.stopPropagation()} style={{ animation: 'ani-scale-in 0.3s ease' }}>
+            <div className="review-modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-primary)', paddingBottom: '0.75rem' }}>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)' }}>Share Your Experience</h3>
+              <button onClick={() => setShowReviewModal(false)} style={{ color: 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                <X size={24} />
+              </button>
+            </div>
+
+            {reviewStatus === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                <CheckCircle2 size={48} color="var(--accent-primary)" style={{ margin: '0 auto 1rem' }} />
+                <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Thank You!</h4>
+                <p style={{ color: 'var(--text-secondary)' }}>Your review has been published in real-time.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                {reviewError && (
+                  <div style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', fontSize: '0.9rem', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+                    {reviewError}
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <label htmlFor="rev-name" style={{ fontWeight: '600', fontSize: '0.9rem' }}>Your Name *</label>
+                  <input 
+                    id="rev-name" 
+                    name="name" 
+                    type="text" 
+                    required 
+                    placeholder="e.g. Rajesh Kumar" 
+                    value={reviewForm.name} 
+                    onChange={handleReviewChange} 
+                    style={{ padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-primary)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+                  />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <label htmlFor="rev-company" style={{ fontWeight: '600', fontSize: '0.9rem' }}>Company / Location *</label>
+                  <input 
+                    id="rev-company" 
+                    name="company" 
+                    type="text" 
+                    required 
+                    placeholder="e.g. Agarwal Plastics, Kanpur" 
+                    value={reviewForm.company} 
+                    onChange={handleReviewChange} 
+                    style={{ padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-primary)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+                  />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <label htmlFor="rev-rating" style={{ fontWeight: '600', fontSize: '0.9rem' }}>Rating *</label>
+                  <select 
+                    id="rev-rating" 
+                    name="rating" 
+                    value={reviewForm.rating} 
+                    onChange={handleReviewChange}
+                    style={{ padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-primary)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+                  >
+                    <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                    <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                    <option value="3">⭐⭐⭐ (3/5)</option>
+                    <option value="2">⭐⭐ (2/5)</option>
+                    <option value="1">⭐ (1/5)</option>
+                  </select>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <label htmlFor="rev-quote" style={{ fontWeight: '600', fontSize: '0.9rem' }}>Your Review *</label>
+                  <textarea 
+                    id="rev-quote" 
+                    name="quote" 
+                    rows="4" 
+                    required 
+                    placeholder="Describe your experience with our plastic machinery sales, service or support..." 
+                    value={reviewForm.quote} 
+                    onChange={handleReviewChange}
+                    style={{ padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-primary)', background: 'var(--bg-primary)', color: 'var(--text-primary)', resize: 'vertical' }}
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="btn btn-primary" 
+                  disabled={reviewStatus === 'loading'} 
+                  style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}
+                >
+                  {reviewStatus === 'loading' ? 'Submitting...' : 'Publish Review'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
     </div>
   );

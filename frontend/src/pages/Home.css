@@ -967,3 +967,44 @@
     border-bottom: none;
   }
 }
+
+/* ==========================================
+   REVIEW SUBMISSION MODAL
+   ========================================== */
+.review-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(11, 15, 25, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10002; /* Float above mobile drawer overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.review-modal-content {
+  width: 100%;
+  max-width: 500px;
+  background: var(--bg-glass-heavy) !important;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-primary) !important;
+  padding: 2.25rem !important;
+  box-shadow: var(--shadow-lg), var(--shadow-gold) !important;
+  transform: translateY(0);
+  transition: all var(--transition-smooth);
+  box-sizing: border-box;
+}
+
+.review-modal-content:hover {
+  transform: none !important;
+}
+
+.write-review-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}

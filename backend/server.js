@@ -13,6 +13,7 @@ import Inquiry from "./models/Inquiry.js";
 import Application from "./models/Application.js";
 import Member from "./models/Member.js";
 import Task from "./models/Task.js";
+import Review from "./models/Review.js";
 
 // Resolve directory paths for logging in ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -521,6 +522,35 @@ app.delete("/api/tasks/:id", requireAdmin, async (req, res) => {
     res.json({ success: true, message: "Task deleted." });
   } catch (err) {
     res.status(500).json({ error: "Failed to delete task." });
+  }
+});
+
+// --- Reviews API ---
+app.get("/api/reviews", async (req, res) => {
+  try {
+    const reviews = await Review.find().sort({ timestamp: -1 });
+    res.json(reviews);
+  } catch (err) {
+    logger.error("Failed to fetch reviews: %s", err.stack || err.message);
+    res.status(500).json({ error: "Failed to fetch customer reviews." });
+  }
+});
+
+app.post("/api/reviews", async (req, res) => {
+  try {
+    const { name, company, rating, quote } = req.body;
+    if (!name || !company || !rating || !quote) {
+      return res.status(400).json({ error: "All fields (name, company, rating, review text) are required." });
+    }
+    if (rating < 1 || rating > 5) {
+      return res.status(400).json({ error: "Rating must be between 1 and 5." });
+    }
+    const newReview = new Review({ name, company, rating, quote });
+    await newReview.save();
+    res.status(201).json({ success: true, review: newReview });
+  } catch (err) {
+    logger.error("Failed to save review: %s", err.stack || err.message);
+    res.status(500).json({ error: "Failed to submit review." });
   }
 });
 
