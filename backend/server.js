@@ -94,15 +94,33 @@ app.use(
   })
 );
 
-// Configure strict B2B Cross-Origin Resource Sharing (CORS)
-const allowedOrigin = process.env.CORS_ORIGIN || "http://localhost:5175";
+// Configure dynamic CORS to allow localhost, Vercel deployments, and the configured custom domain
+const allowedOrigins = [
+  "https://mdtechkanpur.tech",
+  "https://www.mdtechkanpur.tech",
+];
+
+const corsOriginEnv = process.env.CORS_ORIGIN;
+if (corsOriginEnv) {
+  corsOriginEnv.split(",").forEach(o => {
+    const trimmed = o.trim();
+    if (trimmed) allowedOrigins.push(trimmed);
+  });
+}
+
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps, curl requests)
       if (!origin) return callback(null, true);
       
-      if (origin === allowedOrigin || allowedOrigin === "*") {
+      const isAllowed = allowedOrigins.includes(origin) || 
+                        allowedOrigins.includes("*") ||
+                        origin.endsWith(".vercel.app") ||
+                        origin.startsWith("http://localhost:") ||
+                        origin.startsWith("http://127.0.0.1:");
+                        
+      if (isAllowed) {
         callback(null, true);
       } else {
         logger.warn(`CORS blocked request from unauthorized origin: ${origin}`);
