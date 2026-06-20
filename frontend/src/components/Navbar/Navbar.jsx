@@ -189,9 +189,12 @@ const Navbar = () => {
             Contact &amp; Inquiries
           </NavLink>
           
-          <div className="mobile-nav-cta">
-            <Link to="/contact" className="btn btn-primary" style={{ width: '100%' }} onClick={() => setIsOpen(false)}>
+          <div className="mobile-nav-cta" style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', width: '100%', marginTop: '1.5rem' }}>
+            <Link to="/contact" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }} onClick={() => setIsOpen(false)}>
               Request Product Catalog
+            </Link>
+            <Link to="/admin" className="btn btn-outline-gold" style={{ width: '100%', textAlign: 'center', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
+              Staff &amp; Admin Login
             </Link>
           </div>
         </nav>
