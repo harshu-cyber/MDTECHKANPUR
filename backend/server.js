@@ -87,7 +87,7 @@ app.use(
         styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         fontSrc: ["'self'", "https://fonts.gstatic.com"],
         imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: ["'self'", "https://mdtechkanpur.tech"], // Adjust to your production API domain
+        connectSrc: ["'self'", "https://mdtechkanpur.in", "https://www.mdtechkanpur.in"], // Production domain
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
       },
@@ -97,8 +97,8 @@ app.use(
 
 // Configure dynamic CORS to allow localhost, Vercel deployments, and the configured custom domain
 const allowedOrigins = [
-  "https://mdtechkanpur.tech",
-  "https://www.mdtechkanpur.tech",
+  "https://mdtechkanpur.in",
+  "https://www.mdtechkanpur.in",
 ];
 
 const corsOriginEnv = process.env.CORS_ORIGIN;
