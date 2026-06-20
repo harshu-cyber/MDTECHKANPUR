@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "echo 'No build step needed'",
     "start": "node server.js"
   },
   "dependencies": {
