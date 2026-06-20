@@ -69,135 +69,314 @@ const AdminPage = () => {
   const [assignForm, setAssignForm] = useState({ title: '', description: '', priority: 'Medium', assignTo: 'all', memberId: '', dueDate: '' });
   const [assignSuccess, setAssignSuccess] = useState(false);
 
-  useEffect(() => {
-    if (sessionStorage.getItem('admin_auth') === 'true') {
-      setIsLoggedIn(true);
-      setUserRole(sessionStorage.getItem('user_role') || 'admin');
-      setUserName(sessionStorage.getItem('user_name') || 'Root Administrator');
+  const fetchData = async (role) => {
+    try {
+      const tasksRes = await fetch("/api/tasks", { credentials: "include" });
+      if (tasksRes.ok) {
+        const tasksData = await tasksRes.json();
+        setWorkAssignments(tasksData.map(item => ({ 
+          ...item, 
+          id: item._id,
+          assignedDate: item.assignedDate ? new Date(item.assignedDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : '',
+          dueDate: item.dueDate ? new Date(item.dueDate).toISOString().split('T')[0] : ''
+        })));
+      }
+
+      const membersRes = await fetch("/api/members", { credentials: "include" });
+      if (membersRes.ok) {
+        const membersData = await membersRes.json();
+        setTeamMembers(membersData.map(item => ({ 
+          ...item, 
+          id: item._id,
+          hiredDate: item.hiredDate ? new Date(item.hiredDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : ''
+        })));
+      }
+
+      if (role === "admin") {
+        const appsRes = await fetch("/api/applications", { credentials: "include" });
+        if (appsRes.ok) {
+          const appsData = await appsRes.json();
+          setApplications(appsData.map(item => ({ 
+            ...item, 
+            id: item._id,
+            date: item.date ? new Date(item.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''
+          })));
+        }
+
+        const inqRes = await fetch("/api/inquiries", { credentials: "include" });
+        if (inqRes.ok) {
+          const inqData = await inqRes.json();
+          setInquiries(inqData.map(item => ({ ...item, id: item._id })));
+        }
+      }
+    } catch (err) {
+      console.error("Error fetching admin data:", err);
     }
+  };
 
-    const savedApps = localStorage.getItem('careers_applications');
-    setApplications(savedApps ? JSON.parse(savedApps) : MOCK_APPLICATIONS);
-    if (!savedApps) localStorage.setItem('careers_applications', JSON.stringify(MOCK_APPLICATIONS));
-
-    const savedTeam = localStorage.getItem('team_members');
-    setTeamMembers(savedTeam ? JSON.parse(savedTeam) : MOCK_TEAM);
-    if (!savedTeam) localStorage.setItem('team_members', JSON.stringify(MOCK_TEAM));
-
-    const savedInq = localStorage.getItem('md-tech-inquiries');
-    const parsed = savedInq ? JSON.parse(savedInq) : [];
-    setInquiries(parsed.length > 0 ? parsed : MOCK_INQUIRIES);
-    if (parsed.length === 0) localStorage.setItem('md-tech-inquiries', JSON.stringify(MOCK_INQUIRIES));
-
-    const savedWork = localStorage.getItem('work_assignments');
-    setWorkAssignments(savedWork ? JSON.parse(savedWork) : []);
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const res = await fetch("/api/auth/me", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setIsLoggedIn(true);
+            setUserRole(data.user.role);
+            setUserName(data.user.name);
+            if (data.user.role === "staff") {
+              sessionStorage.setItem("user_email", data.user.email);
+              sessionStorage.setItem("user_position", data.user.position);
+            }
+            fetchData(data.user.role);
+          }
+        }
+      } catch (err) {
+        console.error("Session check failed", err);
+      }
+    };
+    checkSession();
   }, []);
 
   /* ─── Auth Handlers ─── */
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoginError('');
-    const envEmail = import.meta.env.VITE_ADMIN_EMAIL || 'admin@mdtech.com';
-    const envPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'MDTechKanpur@2026';
-    
-    // Check Root Admin
-    if (emailInput.toLowerCase() === envEmail.toLowerCase() && passwordInput === envPassword) {
-      sessionStorage.setItem('admin_auth', 'true');
-      sessionStorage.setItem('user_role', 'admin');
-      sessionStorage.setItem('user_name', 'Root Administrator');
-      setUserRole('admin');
-      setUserName('Root Administrator');
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailInput, password: passwordInput }),
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setLoginError(data.error || "Invalid credentials. Please verify your username and password.");
+        return;
+      }
       setIsLoggedIn(true);
-      return;
+      setUserRole(data.user.role);
+      setUserName(data.user.name);
+      if (data.user.role === "staff") {
+        sessionStorage.setItem("user_email", data.user.email);
+        sessionStorage.setItem("user_position", data.user.position);
+      }
+      fetchData(data.user.role);
+    } catch (err) {
+      setLoginError("Failed to connect to the authentication server.");
     }
-    
-    // Check Team Members (ID is email, Password is mobile)
-    const matchingMember = teamMembers.find(m => m.email.toLowerCase() === emailInput.toLowerCase());
-    if (matchingMember && matchingMember.mobile === passwordInput) {
-      sessionStorage.setItem('admin_auth', 'true');
-      sessionStorage.setItem('user_role', 'staff');
-      sessionStorage.setItem('user_name', matchingMember.name);
-      sessionStorage.setItem('user_email', matchingMember.email);
-      sessionStorage.setItem('user_position', matchingMember.position);
-      setUserRole('staff');
-      setUserName(matchingMember.name);
-      setIsLoggedIn(true);
-      return;
-    }
-    
-    setLoginError('Invalid credentials. Please verify your username and password.');
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('admin_auth');
-    sessionStorage.removeItem('user_role');
-    sessionStorage.removeItem('user_name');
-    sessionStorage.removeItem('user_email');
-    sessionStorage.removeItem('user_position');
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+    } catch (err) {
+      console.error("Logout error", err);
+    }
+    sessionStorage.removeItem("user_email");
+    sessionStorage.removeItem("user_position");
+    setIsLoggedIn(false);
     setUserRole('admin');
     setUserName('Root Administrator');
-    setIsLoggedIn(false);
     setEmailInput('');
     setPasswordInput('');
+    setApplications([]);
+    setTeamMembers([]);
+    setInquiries([]);
+    setWorkAssignments([]);
   };
 
   /* ─── Application Handlers ─── */
-  const saveApps = (data) => { localStorage.setItem('careers_applications', JSON.stringify(data)); setApplications(data); };
-  const updateAppStatus = (id, status) => saveApps(applications.map(a => a.id === id ? { ...a, status } : a));
-  const deleteApp = (id) => { if (window.confirm('Delete this application?')) saveApps(applications.filter(a => a.id !== id)); };
-  const addToTeam = (app) => {
-    if (teamMembers.some(m => m.email.toLowerCase() === app.email.toLowerCase())) { alert(`${app.name} is already in the team.`); return; }
-    const newMember = { id: 'team_' + Date.now(), name: app.name, email: app.email, mobile: app.mobile, position: app.position, hiredDate: new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) };
-    const updatedTeam = [newMember, ...teamMembers];
-    localStorage.setItem('team_members', JSON.stringify(updatedTeam));
-    setTeamMembers(updatedTeam);
-    saveApps(applications.map(a => a.id === app.id ? { ...a, addedToTeam: true, status: 'Hired' } : a));
+  const updateAppStatus = async (id, status) => {
+    try {
+      const res = await fetch(`/api/applications/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+        credentials: "include",
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setApplications(prev => prev.map(a => a.id === id ? {
+          ...updated,
+          id: updated._id,
+          date: updated.date ? new Date(updated.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''
+        } : a));
+      } else {
+        alert("Failed to update status.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
-  const removeMember = (id, email) => {
+
+  const deleteApp = async (id) => {
+    if (!window.confirm('Delete this application?')) return;
+    try {
+      const res = await fetch(`/api/applications/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (res.ok) {
+        setApplications(prev => prev.filter(a => a.id !== id));
+      } else {
+        alert("Failed to delete application.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const addToTeam = async (app) => {
+    try {
+      const res = await fetch("/api/members", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: app.name,
+          email: app.email,
+          mobile: app.mobile,
+          position: app.position,
+          applicationId: app.id,
+        }),
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Failed to add member to team.");
+        return;
+      }
+      fetchData(userRole);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const removeMember = async (id, email) => {
     if (!window.confirm('Remove this team member and revoke credentials?')) return;
-    const updatedTeam = teamMembers.filter(m => m.id !== id);
-    localStorage.setItem('team_members', JSON.stringify(updatedTeam));
-    setTeamMembers(updatedTeam);
-    saveApps(applications.map(a => a.email.toLowerCase() === email.toLowerCase() ? { ...a, addedToTeam: false } : a));
+    try {
+      const res = await fetch(`/api/members/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Failed to remove member.");
+        return;
+      }
+      fetchData(userRole);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   /* ─── Inquiry Handlers ─── */
-  const saveInquiries = (data) => { localStorage.setItem('md-tech-inquiries', JSON.stringify(data)); setInquiries(data); };
-  const updateInqStatus = (id, status) => saveInquiries(inquiries.map(i => i.id === id ? { ...i, status } : i));
-  const deleteInquiry = (id) => { if (window.confirm('Delete this inquiry?')) saveInquiries(inquiries.filter(i => i.id !== id)); };
+  const updateInqStatus = async (id, status) => {
+    try {
+      const res = await fetch(`/api/inquiries/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+        credentials: "include",
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setInquiries(prev => prev.map(i => i.id === id ? { ...updated, id: updated._id } : i));
+      } else {
+        alert("Failed to update inquiry status.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteInquiry = async (id) => {
+    if (!window.confirm('Delete this inquiry?')) return;
+    try {
+      const res = await fetch(`/api/inquiries/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (res.ok) {
+        setInquiries(prev => prev.filter(i => i.id !== id));
+      } else {
+        alert("Failed to delete inquiry.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   /* ─── Assign Work Handler ─── */
-  const handleAssignWork = (e) => {
+  const handleAssignWork = async (e) => {
     e.preventDefault();
     if (!assignForm.title.trim()) return;
-    const assignment = {
-      id: 'work_' + Date.now(),
-      ...assignForm,
-      assignedDate: new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }),
-      completionStatus: 'Pending',
-      assignedToName: assignForm.assignTo === 'all'
-        ? 'All Team Members'
-        : assignForm.assignTo === 'member'
-          ? teamMembers.find(m => m.id === assignForm.memberId)?.name || 'Unknown'
-          : 'Unknown'
-    };
-    const updated = [assignment, ...workAssignments];
-    localStorage.setItem('work_assignments', JSON.stringify(updated));
-    setWorkAssignments(updated);
-    setAssignForm({ title: '', description: '', priority: 'Medium', assignTo: 'all', memberId: '', dueDate: '' });
-    setAssignSuccess(true);
-    setTimeout(() => setAssignSuccess(false), 3500);
+    try {
+      const res = await fetch("/api/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(assignForm),
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Failed to assign task.");
+        return;
+      }
+      const mappedTask = {
+        ...data.task,
+        id: data.task._id,
+        assignedDate: data.task.assignedDate ? new Date(data.task.assignedDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : '',
+        dueDate: data.task.dueDate ? new Date(data.task.dueDate).toISOString().split('T')[0] : ''
+      };
+      setWorkAssignments(prev => [mappedTask, ...prev]);
+      setAssignForm({ title: '', description: '', priority: 'Medium', assignTo: 'all', memberId: '', dueDate: '' });
+      setAssignSuccess(true);
+      setTimeout(() => setAssignSuccess(false), 3500);
+    } catch (err) {
+      console.error(err);
+    }
   };
-  const updateWorkStatus = (id, status) => {
-    const updated = workAssignments.map(w => w.id === id ? { ...w, completionStatus: status } : w);
-    localStorage.setItem('work_assignments', JSON.stringify(updated));
-    setWorkAssignments(updated);
+
+  const updateWorkStatus = async (id, status) => {
+    try {
+      const res = await fetch(`/api/tasks/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ completionStatus: status }),
+        credentials: "include",
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setWorkAssignments(prev => prev.map(w => w.id === id ? {
+          ...updated,
+          id: updated._id,
+          assignedDate: updated.assignedDate ? new Date(updated.assignedDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : '',
+          dueDate: updated.dueDate ? new Date(updated.dueDate).toISOString().split('T')[0] : ''
+        } : w));
+      } else {
+        alert("Failed to update task status.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
-  const deleteWork = (id) => {
+
+  const deleteWork = async (id) => {
     if (!window.confirm('Delete this assignment?')) return;
-    const updated = workAssignments.filter(w => w.id !== id);
-    localStorage.setItem('work_assignments', JSON.stringify(updated));
-    setWorkAssignments(updated);
+    try {
+      const res = await fetch(`/api/tasks/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (res.ok) {
+        setWorkAssignments(prev => prev.filter(w => w.id !== id));
+      } else {
+        alert("Failed to delete task.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   /* ─── Computed Stats ─── */

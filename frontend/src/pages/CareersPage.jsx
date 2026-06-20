@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Briefcase, Send, CheckCircle2, User, Mail, Phone, Calendar, Link as LinkIcon, FileText } from 'lucide-react';
+import { submitApplication } from '../services/api';
 import './CareersPage.css';
 
 const activeJobs = [
@@ -60,7 +61,7 @@ const CareersPage = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -70,43 +71,20 @@ const CareersPage = () => {
       return;
     }
 
-    // Capture Candidate Application
-    const newApplication = {
-      id: 'app_' + Date.now(),
-      name: formData.name,
-      email: formData.email,
-      mobile: formData.mobile,
-      position: formData.position,
-      experience: formData.experience,
-      cvLink: formData.cvLink,
-      message: formData.message,
-      status: 'Pending',
-      date: new Date().toLocaleDateString('en-IN', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-    };
-
     try {
-      const existingAppsJson = localStorage.getItem('careers_applications');
-      let currentApps = existingAppsJson ? JSON.parse(existingAppsJson) : [];
-      
-      // Prevent duplicate emails for the same position
-      const isDuplicate = currentApps.some(app => app.email.toLowerCase() === formData.email.toLowerCase() && app.position === formData.position);
-      if (isDuplicate) {
-        setErrorMsg('You have already submitted an application for this position.');
-        return;
-      }
-
-      currentApps.unshift(newApplication);
-      localStorage.setItem('careers_applications', JSON.stringify(currentApps));
+      await submitApplication({
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.mobile,
+        position: formData.position,
+        experience: formData.experience.toString(),
+        cvLink: formData.cvLink,
+        message: formData.message,
+      });
       setIsSubmitted(true);
-    } catch (e) {
-      console.error(e);
-      setErrorMsg('Failed to process submission. Please check your storage settings.');
+    } catch (err) {
+      console.error(err);
+      setErrorMsg(err.message || 'Failed to submit application. Please try again.');
     }
   };
 

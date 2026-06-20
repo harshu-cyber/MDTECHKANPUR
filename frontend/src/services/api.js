@@ -1,53 +1,49 @@
 /**
- * B2B Inquiry Submission Service
+ * B2B Inquiry & Careers Submission Service
  * 
- * Stores inquiries to localStorage and optionally 
- * generates a WhatsApp pre-filled message link.
- * Can be replaced with a real API endpoint later.
+ * Sends requests to the backend API endpoints.
  */
-
-const STORAGE_KEY = 'md-tech-inquiries';
 
 /**
  * Submit a B2B inquiry form.
- * Simulates network latency and persists to localStorage.
  * @param {Object} formData - The inquiry form data
- * @returns {Promise<Object>} - The saved inquiry with ID and timestamp
+ * @returns {Promise<Object>} - The saved inquiry
  */
 export const submitInquiry = async (formData) => {
-  // Simulate network request delay for realistic UX
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const response = await fetch("/api/inquiries", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
 
-  // Generate inquiry record
-  const inquiry = {
-    id: `INQ-${Date.now()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`,
-    timestamp: new Date().toISOString(),
-    status: 'pending',
-    ...formData,
-  };
-
-  // Persist to localStorage
-  try {
-    const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    existing.push(inquiry);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
-  } catch (err) {
-    console.warn('Could not save inquiry to localStorage:', err);
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error || "Failed to submit inquiry.");
   }
-
-  return inquiry;
+  return data.inquiry;
 };
 
 /**
- * Retrieve all stored inquiries from localStorage.
- * @returns {Array} - Array of inquiry objects
+ * Submit a careers job application form.
+ * @param {Object} applicationData - The candidate details
+ * @returns {Promise<Object>} - The saved application record
  */
-export const getInquiries = () => {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  } catch {
-    return [];
+export const submitApplication = async (applicationData) => {
+  const response = await fetch("/api/applications", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(applicationData),
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error || "Failed to submit application.");
   }
+  return data.application;
 };
 
 /**
