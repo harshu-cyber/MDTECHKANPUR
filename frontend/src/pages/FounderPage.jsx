@@ -62,7 +62,7 @@ const FounderPage = () => {
               </div>
               <div className="meta-detail-row">
                 <Mail size={16} />
-                <a href="mailto:kumarajay03582@gmail.com" className="hover-gold">kumarajay03582@gmail.com</a>
+                <a href="mailto:m.d.techkanpur@gmail.com" className="hover-gold">m.d.techkanpur@gmail.com</a>
               </div>
               <div className="meta-detail-row">
                 <MapPin size={16} />

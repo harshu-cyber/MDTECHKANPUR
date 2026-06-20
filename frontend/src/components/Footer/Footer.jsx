@@ -100,7 +100,7 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <Mail className="contact-icon" size={16} />
-                <a href="mailto:mdtechkanpur@gmail.com">mdtechkanpur@gmail.com</a>
+                <a href="mailto:m.d.techkanpur@gmail.com">m.d.techkanpur@gmail.com</a>
               </div>
             </div>
 

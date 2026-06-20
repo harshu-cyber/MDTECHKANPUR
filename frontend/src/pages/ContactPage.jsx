@@ -114,7 +114,7 @@ const ContactPage = () => {
               <div className="info-icon-wrapper"><Mail size={20} /></div>
               <div>
                 <span className="info-card-label">Email</span>
-                <a href="mailto:mdtechkanpur@gmail.com" className="info-card-value info-link">mdtechkanpur@gmail.com</a>
+                <a href="mailto:m.d.techkanpur@gmail.com" className="info-card-value info-link">m.d.techkanpur@gmail.com</a>
               </div>
             </div>
 
@@ -155,7 +155,7 @@ const ContactPage = () => {
                 <AlertCircle size={20} />
                 <div>
                   <strong>Submission Failed</strong>
-                  <p>Please try again or contact us directly at mdtechkanpur@gmail.com</p>
+                  <p>Please try again or contact us directly at m.d.techkanpur@gmail.com</p>
                 </div>
               </div>
             )}
