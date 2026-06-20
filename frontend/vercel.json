@@ -37,7 +37,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://mdtechkanpur-backend.onrender.com/api/:path*"
+      "destination": "https://mdtechkanpur.onrender.com/api/:path*"
     }
   ],
   "cleanUrls": true,
