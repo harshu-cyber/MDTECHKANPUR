@@ -193,7 +193,7 @@ const Navbar = () => {
             <Link to="/contact" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }} onClick={() => setIsOpen(false)}>
               Request Product Catalog
             </Link>
-            <Link to="/admin" className="btn btn-outline-gold" style={{ width: '100%', textAlign: 'center', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
+            <Link to="/admin" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
               Staff &amp; Admin Login
             </Link>
           </div>

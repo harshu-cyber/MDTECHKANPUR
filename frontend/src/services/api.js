@@ -4,13 +4,17 @@
  * Sends requests to the backend API endpoints.
  */
 
+const API_BASE_URL = import.meta.env.MODE === 'development' 
+  ? '' 
+  : 'https://mdtechkanpur.onrender.com';
+
 /**
  * Submit a B2B inquiry form.
  * @param {Object} formData - The inquiry form data
  * @returns {Promise<Object>} - The saved inquiry
  */
 export const submitInquiry = async (formData) => {
-  const response = await fetch("/api/inquiries", {
+  const response = await fetch(`${API_BASE_URL}/api/inquiries`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +35,7 @@ export const submitInquiry = async (formData) => {
  * @returns {Promise<Object>} - The saved application record
  */
 export const submitApplication = async (applicationData) => {
-  const response = await fetch("/api/applications", {
+  const response = await fetch(`${API_BASE_URL}/api/applications`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +71,7 @@ export const generateWhatsAppLink = ({ productName, companyName, contactName }) 
  * @returns {Promise<Array>} - List of reviews
  */
 export const getReviews = async () => {
-  const response = await fetch("/api/reviews");
+  const response = await fetch(`${API_BASE_URL}/api/reviews`);
   const data = await response.json();
   if (!response.ok) {
     throw new Error(data.error || "Failed to fetch reviews.");
@@ -81,7 +85,7 @@ export const getReviews = async () => {
  * @returns {Promise<Object>} - The saved review
  */
 export const submitReview = async (reviewData) => {
-  const response = await fetch("/api/reviews", {
+  const response = await fetch(`${API_BASE_URL}/api/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
