@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Briefcase, Send, CheckCircle2, User, Mail, Phone, Calendar, Link as LinkIcon, FileText } from 'lucide-react';
 import { submitApplication } from '../services/api';
+import SEO from '../components/SEO/SEO';
 import './CareersPage.css';
 
 const activeJobs = [
@@ -90,6 +91,10 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page-wrapper ani-fade-in">
+      <SEO 
+        title="Careers & Jobs | MD TechKanpur"
+        description="Join Kanpur's leading team in plastic machinery sales, technical service, and PLC automation. Apply now for engineering and sales positions."
+      />
       {/* Hero Header */}
       <section className="careers-hero">
         <div className="container">

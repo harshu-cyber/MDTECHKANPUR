@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Search, X, ChevronRight, Layers, Thermometer, Activity, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/products';
+import SEO from '../components/SEO/SEO';
 import './ProductsPage.css';
 
 const ProductsPage = () => {
@@ -40,6 +41,10 @@ const ProductsPage = () => {
 
   return (
     <div className="products-page-wrapper ani-fade-in">
+      <SEO 
+        title="Our Products & Machinery | MD TechKanpur"
+        description="Browse our range of plastic extruders, injection moulding machines, auxiliary equipment, and plastic raw materials in Kanpur."
+      />
 
       {/* Page Header */}
       <section className="products-hero">

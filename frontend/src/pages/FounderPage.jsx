@@ -16,11 +16,16 @@ import {
   Zap,
   CheckCircle2
 } from 'lucide-react';
+import SEO from '../components/SEO/SEO';
 import './FounderPage.css';
 
 const FounderPage = () => {
   return (
     <div className="founder-page-wrapper ani-fade-in">
+      <SEO 
+        title="Founder & Leadership | MD TechKanpur"
+        description="Meet Ajay Kumar Srivastava, Founder of MD TechKanpur. With over 20 years of experience in the polymer and plastic machinery industry in Northern India."
+      />
       {/* 1. Executive Hero Header */}
       <section className="founder-hero-section">
         <div className="container">

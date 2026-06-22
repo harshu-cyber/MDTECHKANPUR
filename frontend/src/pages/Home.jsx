@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, MapPin, Wrench, ShoppingCart, Shield, Zap, Star, ChevronRight, Settings, Cpu, Factory, Layers, Package, CheckCircle2, X } from 'lucide-react';
 import { getReviews, submitReview } from '../services/api';
+import SEO from '../components/SEO/SEO';
 import './Home.css';
 
 /* ─── Animated Counter Hook ─── */
@@ -179,6 +180,10 @@ const Home = () => {
 
   return (
     <div className="home-page-wrapper">
+      <SEO 
+        title="MD TechKanpur | Premium Polymer Masterbatch Manufacturer"
+        description="Your trusted partner for Plastic Color Masterbatch, Plastic Compounds, Engineering Compounds, and Additives in Kanpur. Extruders, Injection Moulding, and Auxiliary Equipment."
+      />
 
       {/* ═══════════════════════════════════════
           HERO SECTION — Full banner image

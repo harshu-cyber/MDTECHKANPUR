@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Send, MapPin, Phone, Mail, Clock, CheckCircle2, AlertCircle, Loader } from 'lucide-react';
 import { products } from '../data/products';
 import { submitInquiry } from '../services/api';
+import SEO from '../components/SEO/SEO';
 import './ContactPage.css';
 
 const INITIAL_FORM = {
@@ -74,6 +75,10 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page-wrapper ani-fade-in">
+      <SEO 
+        title="Contact Us | MD TechKanpur"
+        description="Get in touch with MD TechKanpur for plastic machinery sales, spare parts, on-site servicing, and AMC inquiries. Fast technical response."
+      />
 
       {/* Hero */}
       <section className="contact-hero">

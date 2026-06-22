@@ -1,5 +1,6 @@
 import React from 'react';
 import { Cpu, ShieldCheck, Wrench, Shield, Zap, Settings } from 'lucide-react';
+import SEO from '../components/SEO/SEO';
 import './InfrastructurePage.css';
 
 const machines = [
@@ -73,6 +74,10 @@ const machines = [
 const InfrastructurePage = () => {
   return (
     <div className="infrastructure-page-wrapper ani-fade-in">
+      <SEO 
+        title="Infrastructure & Workshop | MD TechKanpur"
+        description="Explore our 20,000 sq. ft. technical campus in Dadanagar, Kanpur featuring heavy machinery overhauling bays, PLC automation labs, and spare parts warehousing."
+      />
 
       {/* Hero */}
       <section className="infra-hero">

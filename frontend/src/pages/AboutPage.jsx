@@ -1,10 +1,15 @@
 import React from 'react';
 import { ShieldCheck, Recycle, Factory, Landmark, Award, Zap, Cpu } from 'lucide-react';
+import SEO from '../components/SEO/SEO';
 import './AboutPage.css';
 
 const AboutPage = () => {
   return (
     <div className="about-page-wrapper ani-fade-in">
+      <SEO 
+        title="About Us | MD TechKanpur"
+        description="Learn about MD TechKanpur Machinery, Kanpur's leading B2B plastic machinery dealer and service provider. Over 20 years of technical excellence."
+      />
       {/* 1. Page Header Hero */}
       <section className="about-hero-section">
         <div className="container">
