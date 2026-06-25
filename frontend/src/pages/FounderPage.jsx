@@ -157,7 +157,7 @@ const FounderPage = () => {
             <span className="section-subtitle">Operational Creed</span>
             <h2 className="section-title">Founder's Core Values</h2>
             <p className="section-desc">
-              The fundamental principles that guide every deal, service dispatch, and long-term client contract under Ajay's leadership.
+              The fundamental principles that guide every deal, machine delivery, and long-term client contract under Ajay's leadership.
             </p>
           </div>
 
@@ -215,7 +215,7 @@ const FounderPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="section-subtitle">Industrial Operations</span>
-            <h2 className="section-title">Our Specializations &amp; Services</h2>
+            <h2 className="section-title">Our Specializations &amp; Contract Work</h2>
             <p className="section-desc">
               Running Plastic Masterbatch and Injection Moulding machines safely and efficiently through our skilled technical team — delivering new colour development tailored to live market demand.
             </p>
@@ -278,7 +278,7 @@ const FounderPage = () => {
             <div className="spec-block glass-panel" style={{ padding: '2.5rem' }}>
               <h3 className="spec-block-title">
                 <Factory size={26} />
-                Factory Contract &amp; Specialist Services
+                Factory Contract &amp; Operations
               </h3>
               <p className="spec-paragraph">
                 We are specialists in running plastic processing machinery at customer factories on a contract basis. Our skilled team operates Injection Moulding and Masterbatch machines safely, ensuring consistent quality output across production shifts.

@@ -77,7 +77,7 @@ const ContactPage = () => {
     <div className="contact-page-wrapper ani-fade-in">
       <SEO 
         title="Contact Us | MD TechKanpur"
-        description="Get in touch with MD TechKanpur for plastic machinery sales, spare parts, on-site servicing, and AMC inquiries. Fast technical response."
+        description="Get in touch with MD TechKanpur for plastic machinery sales, spare parts, installation, commissioning, and AMC inquiries. Fast technical response."
       />
 
       {/* Hero */}
@@ -206,7 +206,7 @@ const ContactPage = () => {
 
               <div className="form-row">
                 <div className={`form-group ${errors.productId ? 'has-error' : ''}`}>
-                  <label htmlFor="productId">Service / Product Required *</label>
+                  <label htmlFor="productId">Product / Spares Required *</label>
                   <select id="productId" name="productId" value={form.productId} onChange={handleChange}>
                     <option value="">— Select Requirement —</option>
                     <option value="extruder-new">Plastic Extruder (New)</option>

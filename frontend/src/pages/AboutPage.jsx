@@ -8,7 +8,7 @@ const AboutPage = () => {
     <div className="about-page-wrapper ani-fade-in">
       <SEO 
         title="About Us | MD TechKanpur"
-        description="Learn about MD TechKanpur Machinery, Kanpur's leading B2B plastic machinery dealer and service provider. Over 20 years of technical excellence."
+        description="Learn about MD TechKanpur Machinery, Kanpur's leading B2B plastic machinery supplier and AMC partner. Over 20 years of technical excellence."
       />
       {/* 1. Page Header Hero */}
       <section className="about-hero-section">
@@ -16,7 +16,7 @@ const AboutPage = () => {
           <span className="section-subtitle">Corporate Profile</span>
           <h1 className="about-hero-title">MD TechKanpur Machinery</h1>
           <p className="about-hero-desc">
-            For over 20 years, we have been providing technical precision, factory-grade servicing, and premium sales support for plastic converting machinery across Kanpur and northern India.
+            For over 20 years, we have been providing technical precision, commissioning assistance, and premium sales support for plastic converting machinery across Kanpur and northern India.
           </p>
         </div>
       </section>
@@ -30,7 +30,7 @@ const AboutPage = () => {
               MD TechKanpur was established with a singular mission: to elevate the operational efficiency and quality standards of plastic processing units by supplying state-of-the-art machinery, certified technical overhauls, and premium replacement components.
             </p>
             <p className="about-paragraph">
-              Operating from our dedicated technical service points and parts hubs in Dadanagar, Kanpur, we have grown from a specialized servicing team into a trusted B2B machinery dealer. Our commitment is rooted in practical mechanical science, robust electric and hydraulic standards, and rapid service response times.
+              Operating from our dedicated technical hubs and parts networks in Dadanagar, Kanpur, we have grown from a specialized technical team into a trusted B2B machinery dealer. Our commitment is rooted in practical mechanical science, robust electric and hydraulic standards, and rapid response times.
             </p>
             
             {/* Executive Quote */}
@@ -89,13 +89,13 @@ const AboutPage = () => {
             <div className="pillar-card glass-panel">
               <div className="pillar-icon"><Factory size={24} /></div>
               <h3 className="pillar-title">Technical Integrity</h3>
-              <p className="pillar-desc">Factory-grade servicing and rebuild programs configured to extend machine lifespan and ensure precise output controls.</p>
+              <p className="pillar-desc">Factory-grade testing and AMC calibration programs configured to extend machine lifespan and ensure precise output controls.</p>
             </div>
 
             <div className="pillar-card glass-panel">
               <div className="pillar-icon"><Zap size={24} /></div>
-              <h3 className="pillar-title">Rapid Breakdown Support</h3>
-              <p className="pillar-desc">Emergency technical dispatch teams handling breakdown calls within 2 to 4 hours across Kanpur and neighboring industrial zones.</p>
+              <h3 className="pillar-title">Commissioning Support</h3>
+              <p className="pillar-desc">Expert on-site installation and machinery commissioning support to ensure smooth production startups.</p>
             </div>
 
             <div className="pillar-card glass-panel">

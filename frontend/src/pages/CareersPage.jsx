@@ -7,12 +7,12 @@ import './CareersPage.css';
 const activeJobs = [
   {
     id: 'service-engineer',
-    title: 'Plastic Machinery Service Engineer',
+    title: 'Machinery Commissioning & AMC Engineer',
     department: 'Technical Operations',
     location: 'Kanpur / UP (On-Site & Field)',
     type: 'Full-Time',
     experience: '3 - 8 Years',
-    description: 'We are seeking an experienced field service technician for troubleshooting, installing, and performing AMC maintenance on single/twin-screw extruders and hydraulic moulding machines.'
+    description: 'We are seeking an experienced technical engineer for installing, commissioning, and performing scheduled AMC maintenance checks on single/twin-screw extruders and hydraulic moulding machines.'
   },
   {
     id: 'plc-specialist',
@@ -93,7 +93,7 @@ const CareersPage = () => {
     <div className="careers-page-wrapper ani-fade-in">
       <SEO 
         title="Careers & Jobs | MD TechKanpur"
-        description="Join Kanpur's leading team in plastic machinery sales, technical service, and PLC automation. Apply now for engineering and sales positions."
+        description="Join Kanpur's leading team in plastic machinery sales, commissioning, and PLC automation. Apply now for engineering and sales positions."
       />
       {/* Hero Header */}
       <section className="careers-hero">
@@ -101,7 +101,7 @@ const CareersPage = () => {
           <span className="section-subtitle">Work With Us</span>
           <h1 className="careers-hero-title">Build Your Career in Engineering</h1>
           <p className="careers-hero-desc">
-            Join Kanpur's leading team in plastic machinery sales and technical service. We provide continuous growth, hands-on training, and a highly professional environment.
+            Join Kanpur's leading team in plastic machinery sales and commissioning operations. We provide continuous growth, hands-on training, and a highly professional environment.
           </p>
         </div>
       </section>

@@ -9,14 +9,14 @@ import './AdminPage.css';
 
 /* ─── Constants ─── */
 const POSITION_TITLES = {
-  'service-engineer': 'Service Engineer (Mechanics)',
+  'service-engineer': 'Commissioning & AMC Engineer',
   'plc-specialist': 'PLC & Automation Programmer',
   'sales-rep': 'Machinery Sales Executive',
   'cnc-machinist': 'CNC Lathe & Milling Machinist'
 };
 
 const MOCK_APPLICATIONS = [
-  { id: 'app_mock1', name: 'Rajesh Malhotra', email: 'rajesh.m@gmail.com', mobile: '9812345670', position: 'service-engineer', experience: '5', cvLink: 'https://drive.google.com/file/d/mock-resume-rajesh/view', message: 'Experienced in twin-screw compounding lines maintenance. Reconditioned 30+ extruders.', status: 'Pending', date: '28 May 2026, 10:15 am' },
+  { id: 'app_mock1', name: 'Rajesh Malhotra', email: 'rajesh.m@gmail.com', mobile: '9812345670', position: 'service-engineer', experience: '5', cvLink: 'https://drive.google.com/file/d/mock-resume-rajesh/view', message: 'Experienced in twin-screw compounding lines commissioning. Installed 30+ extruders.', status: 'Pending', date: '28 May 2026, 10:15 am' },
   { id: 'app_mock2', name: 'Siddharth Mishra', email: 'sid.mishra@automation.com', mobile: '8877665544', position: 'plc-specialist', experience: '4', cvLink: 'https://drive.google.com/file/d/mock-resume-sid/view', message: 'PLC Panel developer specializing in Siemens S7-1200 and Techmation controls.', status: 'Shortlisted', date: '29 May 2026, 04:30 pm' },
   { id: 'app_mock3', name: 'Vikas Yadav', email: 'vikas.yadav@machinery.in', mobile: '7766554433', position: 'sales-rep', experience: '6', cvLink: 'https://drive.google.com/file/d/mock-resume-vikas/view', message: 'B2B sales background in northern India selling blown film extruders.', status: 'Hired', date: '25 May 2026, 02:00 pm', addedToTeam: true }
 ];
