@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="container top-bar-container">
           <div className="top-bar-item">
             <Globe size={13} />
-            <span>526 K, Barra Vishwa Bank, Kanpur — Sales &amp; Service</span>
+            <span>526 K, Barra Vishwa Bank, Kanpur — Plastic Machinery Dealers</span>
           </div>
           <div className="top-bar-item flex-right">
             <Award size={13} color="var(--accent-primary)" />

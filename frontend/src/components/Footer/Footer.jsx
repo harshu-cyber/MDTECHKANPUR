@@ -25,7 +25,7 @@ const Footer = () => {
               <img src="/logo-new.png" alt="MD TechKanpur Logo" className="footer-logo" />
             </Link>
             <p className="brand-summary">
-              MD TechKanpur is Kanpur's trusted partner for Plastic Machinery Sales, Service,
+              MD TechKanpur is Kanpur's trusted partner for Plastic Machinery Sales,
               Spare Parts & Raw Material Supply. <em>Innovate · Produce · Empower.</em>
             </p>
             <div className="footer-social-row">
@@ -59,9 +59,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 3: Services */}
+          {/* Col 3: Products */}
           <div className="footer-col">
-            <span className="footer-col-title">Our Services</span>
+            <span className="footer-col-title">Our Products</span>
             <ul className="footer-links">
               <li>
                 <span className="footer-link-icon"><Settings size={12} /></span>
@@ -76,12 +76,12 @@ const Footer = () => {
                 Auxiliary Equipment
               </li>
               <li>
-                <span className="footer-link-icon"><Wrench size={12} /></span>
-                Servicing & Maintenance
+                <span className="footer-link-icon"><Package size={12} /></span>
+                Spare Parts Supply
               </li>
               <li>
-                <span className="footer-link-icon"><Wrench size={12} /></span>
-                AMC Contracts
+                <span className="footer-link-icon"><Package size={12} /></span>
+                Raw Material / Granules
               </li>
             </ul>
           </div>
@@ -136,8 +136,8 @@ const Footer = () => {
               &nbsp;·&nbsp; Kanpur's Trusted Plastic Machinery Partner
             </p>
             <div className="bottom-tags">
-              <span className="compliance-tag">Sales &amp; Service</span>
-              <span className="compliance-tag">AMC Available</span>
+              <span className="compliance-tag">Machinery Sales</span>
+              <span className="compliance-tag">Quality Assured</span>
               <span className="compliance-tag">Genuine Spare Parts</span>
             </div>
           </div>
