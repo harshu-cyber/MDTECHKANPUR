@@ -14,7 +14,7 @@ const machines = [
       'Temperature Monitors: Multi-channel infrared thermal trackers',
       'Machine Covered: Single & twin screw extruders, heavy hydraulic presses'
     ],
-    desc: 'The heart of our mechanical engineering facility — a heavy-duty workshop equipped with specialized tools, cranes, and diagnostic equipment to overhaul and test pre-owned plastic machinery.',,
+    desc: 'The heart of our mechanical engineering facility — a heavy-duty workshop equipped with specialized tools, cranes, and diagnostic equipment to overhaul and test pre-owned plastic machinery.',
     icon: Wrench
   },
   {
@@ -66,7 +66,7 @@ const machines = [
       'Verification Standard: Conformance to Indian & ISO machinery safety codes',
       'Audit Release: Comprehensive 15-Point QC certificate generated per machine'
     ],
-    desc: 'Every machine undergoes intense pressure and load trials before delivery. This ensures that when the machine arrives at your factory floor, it starts up smoothly with zero commissioning delays.',,
+    desc: 'Every machine undergoes intense pressure and load trials before delivery. This ensures that when the machine arrives at your factory floor, it starts up smoothly with zero commissioning delays.',
     icon: ShieldCheck
   }
 ];
