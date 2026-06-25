@@ -88,13 +88,13 @@ const FounderPage = () => {
 
               <div className="founder-narrative">
                 <p>
-                  Established and led by <strong>Ajay Kumar Srivastava</strong>, MD TechKanpur represents a commitment to technical precision and transparent B2B partnership. With over 17 years of extensive business development, sales leadership, and customer relationship experience in the industrial hub of Kanpur, Ajay has built MD TechKanpur on the foundation of practical mechanical excellence and genuine, fast service.
+                  Established and led by <strong>Ajay Kumar Srivastava</strong>, MD TechKanpur represents a commitment to technical precision and transparent B2B partnership. With over 17 years of extensive business development, sales leadership, and customer relationship experience in the industrial hub of Kanpur, Ajay has built MD TechKanpur on the foundation of practical mechanical excellence and genuine, fast delivery.
                 </p>
                 <p>
                   Having graduated from the prestigious <strong>CSJM University, Kanpur</strong>, Ajay has dedicated his professional career to bridging the gap between top-tier machinery manufacturers and regional plastic converters. He has spent his entire career in regional sales management and distribution operations, mastering lead qualification, logistics, and proven customer service standards.
                 </p>
                 <p>
-                  Under his leadership, MD TechKanpur has evolved from a specialized machinery servicing team into a prominent dealer of high-performance plastic extruders, servo-driven injection moulding systems, raw material masterbatches, and precision auxiliary spares. Ajay maintains a hands-on approach, ensuring that our emergency technical response teams remain Kanpur's fastest and most reliable.
+                  Under his leadership, MD TechKanpur has evolved into a prominent dealer of high-performance plastic extruders, servo-driven injection moulding systems, raw material masterbatches, and precision auxiliary spares — serving clients across Northern India with unmatched speed and reliability.
                 </p>
               </div>
             </div>
@@ -112,7 +112,7 @@ const FounderPage = () => {
                   <span className="timeline-year">2022 – Present</span>
                   <h4 className="timeline-title">Founding MD TechKanpur</h4>
                   <p className="timeline-desc">
-                    Established MD TechKanpur as the premier single-point hub for Plastic Extruders, Injection Moulding Machinery, genuine replacement parts, and high-performance servicing across Northern India. Created Kanpur's leading rapid technical response crew.
+                    Established MD TechKanpur as the premier single-point hub for Plastic Extruders, Injection Moulding Machinery, genuine replacement parts, and high-quality raw material masterbatches across Northern India. Built Kanpur's most trusted machinery sales and supply network.
                   </p>
                 </div>
 
@@ -185,14 +185,13 @@ const FounderPage = () => {
               </p>
             </div>
 
-            {/* Value 3: Customer-First Response */}
             <div className="value-card glass-panel">
               <div className="value-icon-box">
                 <Users size={24} />
               </div>
-              <h3 className="value-title">Customer Service</h3>
+              <h3 className="value-title">Customer First</h3>
               <p className="value-desc">
-                Treating every breakdown as our own priority. We maintain a local emergency service response standard of 2 to 4 hours in Dadanagar and wider Kanpur.
+                Treating every client requirement as our top priority. We ensure fast quotation response, smooth delivery coordination, and genuine after-sales support.
               </p>
             </div>
 
@@ -346,7 +345,7 @@ const FounderPage = () => {
             </div>
             <h2 className="cta-box-title">Direct Consultation with the Founder</h2>
             <p className="cta-box-desc">
-              Have questions regarding plastic extruders, custom screw and barrel designs, breakdown diagnostics, or long-term AMC setups? Discuss your B2B requirements directly with Ajay Kumar Srivastava.
+              Have questions regarding plastic extruders, injection moulding machinery, raw material masterbatches, or custom machinery requirements? Discuss your B2B needs directly with Ajay Kumar Srivastava.
             </p>
 
             <div className="cta-btn-group">

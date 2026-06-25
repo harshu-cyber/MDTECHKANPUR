@@ -86,7 +86,7 @@ const ContactPage = () => {
           <span className="section-subtitle">Get In Touch</span>
           <h1 className="contact-hero-title">Contact MD TechKanpur</h1>
           <p className="contact-hero-desc">
-            Looking to buy, service, or get spare parts for plastic machinery? Our team is here to help.
+            Looking to buy plastic machinery or need spare parts? Our team is here to help.
             Call us directly at <strong style={{color:'#c9a227'}}>7499645819</strong> or fill in the form below.
           </p>
         </div>
@@ -127,13 +127,13 @@ const ContactPage = () => {
               <div className="info-icon-wrapper"><Clock size={20} /></div>
               <div>
                 <span className="info-card-label">Our Commitment</span>
-                <p className="info-card-value">On-site service calls: within 2–4 hours<br />Machine quotes: same day<br />Spare parts availability: immediate</p>
+                <p className="info-card-value">Machine quotes: same day<br />Spare parts availability: immediate<br />Delivery: fast & reliable</p>
               </div>
             </div>
 
             {/* Trust Badges */}
             <div className="trust-strip glass-panel">
-              <span className="trust-badge">Sales &amp; Service</span>
+              <span className="trust-badge">Machinery Sales</span>
               <span className="trust-badge">AMC Available</span>
               <span className="trust-badge">Genuine Parts</span>
               <span className="trust-badge">Fast Response</span>
@@ -142,7 +142,7 @@ const ContactPage = () => {
 
           {/* RIGHT: B2B Inquiry Form */}
           <div className="inquiry-form-wrapper glass-panel">
-            <h2 className="form-title">Service &amp; Product Inquiry</h2>
+            <h2 className="form-title">Product Inquiry</h2>
             <p className="form-subtitle">Tell us what you need — we'll get back to you fast. All fields marked * are required.</p>
 
             {status === 'success' && (
@@ -215,8 +215,6 @@ const ContactPage = () => {
                     <option value="injection-used">Injection Moulding Machine (Used)</option>
                     <option value="auxiliary">Auxiliary Equipment</option>
                     <option value="spare-parts">Spare Parts</option>
-                    <option value="service">On-Site Servicing / Repair</option>
-                    <option value="amc">Annual Maintenance Contract (AMC)</option>
                     <option value="raw-material">Raw Material / Granules</option>
                     <option value="other">Other / Custom Requirement</option>
                   </select>
@@ -241,7 +239,7 @@ const ContactPage = () => {
 
               <div className={`form-group ${errors.message ? 'has-error' : ''}`}>
                 <label htmlFor="message">Describe Your Requirement *</label>
-                <textarea id="message" name="message" rows="5" placeholder="e.g. Need servicing for a 100-ton injection moulding machine, facing heating issues. Or: Looking to buy a new single-screw extruder for pipe making..." value={form.message} onChange={handleChange}></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="e.g. Need to buy a 100-ton injection moulding machine. Or: Looking for a new single-screw extruder for pipe making..." value={form.message} onChange={handleChange}></textarea>
                 {errors.message && <span className="error-msg">{errors.message}</span>}
               </div>
 

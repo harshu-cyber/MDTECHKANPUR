@@ -42,7 +42,7 @@ const services = [
     icon: <Settings size={32} />,
     title: 'Plastic Extruders',
     desc: 'High-performance single & twin-screw extruders for granules, pipes, profiles, sheets and more.',
-    tag: 'SALES & SERVICE',
+    tag: 'SALES',
     color: '#c9a227',
   },
   {
@@ -50,7 +50,7 @@ const services = [
     icon: <Cpu size={32} />,
     title: 'Injection Moulding Machines',
     desc: 'Full range of hydraulic & all-electric injection moulding machines — new and refurbished units.',
-    tag: 'SALES & SERVICE',
+    tag: 'SALES',
     color: '#e6b933',
   },
   {
@@ -63,10 +63,10 @@ const services = [
   },
   {
     id: 4,
-    icon: <Shield size={32} />,
-    title: 'Servicing & Maintenance',
-    desc: 'On-site breakdown support, AMC contracts, spare parts supply and machine reconditioning.',
-    tag: 'AMC AVAILABLE',
+    icon: <Package size={32} />,
+    title: 'Raw Material Supply',
+    desc: 'Premium PP, PE, PET, ABS granules and masterbatch raw material for your extrusion and moulding needs.',
+    tag: 'SUPPLY',
     color: '#c9a227',
   },
 ];
@@ -98,7 +98,7 @@ const testimonials = [
     name: 'Ramesh Agarwal',
     company: 'Agarwal Plastics, Kanpur',
     rating: 5,
-    quote: 'MD TechKanpur sorted our injection moulding machine breakdown within hours. Excellent service team and fair pricing. Highly recommended!',
+    quote: 'MD TechKanpur supplied us a top-quality injection moulding machine at the best price in Kanpur. Excellent team and genuine parts. Highly recommended!',
   },
   {
     id: 2,
@@ -224,8 +224,8 @@ const Home = () => {
 
             {/* Quick trust pills */}
             <div className="hero-trust-pills">
-              <span className="trust-pill"><Zap size={13} /> Fast On-Site Service</span>
-              <span className="trust-pill"><Shield size={13} /> AMC Contracts</span>
+              <span className="trust-pill"><Zap size={13} /> Fast Delivery</span>
+              <span className="trust-pill"><Shield size={13} /> Quality Assured</span>
               <span className="trust-pill"><Star size={13} /> 500+ Happy Clients</span>
             </div>
           </div>
@@ -239,7 +239,7 @@ const Home = () => {
               <h3 className="info-card-title">Working as Technician &amp; Sales</h3>
               <p className="info-card-sub">for Plastic Machinery's</p>
               <div className="info-services-list">
-                {['Plastic Extruders', 'Injection Moulding', 'Auxiliary Equipment', 'Servicing & Maintenance'].map((s, i) => (
+                {['Plastic Extruders', 'Injection Moulding', 'Auxiliary Equipment', 'Raw Material Supply'].map((s, i) => (
                   <div key={i} className="info-service-row">
                     <ChevronRight size={14} className="info-chevron" />
                     <span>{s}</span>
@@ -282,7 +282,7 @@ const Home = () => {
           </div>
           <div className="stat-item">
             <span className="stat-num">{machinesCount}+</span>
-            <span className="stat-lbl">Machines Serviced</span>
+            <span className="stat-lbl">Machines Sold</span>
           </div>
           <div className="stat-item">
             <span className="stat-num">{citiesCount}+</span>
@@ -299,9 +299,9 @@ const Home = () => {
           <div className="section-header">
             <div className="gold-divider" />
             <span className="section-subtitle">What We Do</span>
-            <h2 className="section-title">Our Core Services</h2>
+            <h2 className="section-title">Our Core Offerings</h2>
             <p className="section-desc">
-              From machine procurement to breakdown maintenance — MD TechKanpur is your end-to-end
+              From plastic machinery sales to raw material supply — MD TechKanpur is your trusted
               plastic machinery partner in Kanpur &amp; beyond.
             </p>
           </div>
@@ -336,7 +336,7 @@ const Home = () => {
           <div className="container banner-strip-content">
             <div className="bstrip-text">
               <h2 className="bstrip-title">Quality Machines · Better Performance</h2>
-              <p className="bstrip-sub">Sales &nbsp;|&nbsp; Service &nbsp;|&nbsp; Support</p>
+              <p className="bstrip-sub">Sales &nbsp;|&nbsp; Supply &nbsp;|&nbsp; Support</p>
             </div>
             <div className="bstrip-actions">
               <a href="tel:7499645819" className="btn btn-primary btn-large">
@@ -399,13 +399,13 @@ const Home = () => {
             </h2>
             <p className="section-desc" style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
               With over 20 years in the plastic machinery industry, we bring unmatched technical expertise,
-              genuine spare parts, and round-the-clock support to keep your production lines running.
+              genuine spare parts, and trusted B2B partnerships across Northern India.
             </p>
             <div className="why-features">
               {[
-                { icon: <Zap size={20} />, title: '24/7 Breakdown Support', desc: 'Emergency service calls handled within 2–4 hours across Kanpur & UP.' },
+                { icon: <Zap size={20} />, title: 'Wide Product Range', desc: 'Plastic extruders, injection moulding machines, auxiliaries & raw materials — all under one roof.' },
                 { icon: <ShoppingCart size={20} />, title: 'Best Price Guarantee', desc: 'Transparent pricing with no hidden costs. Best market rates on all machinery.' },
-                { icon: <Wrench size={20} />, title: 'Certified Technicians', desc: 'Factory-trained engineers for all major plastic machinery brands.' },
+                { icon: <Wrench size={20} />, title: 'Technical Expertise', desc: 'Deep domain knowledge for all major plastic machinery brands and raw material grades.' },
                 { icon: <Shield size={20} />, title: 'Genuine Spare Parts', desc: 'OEM-quality spare parts sourced directly from top manufacturers.' },
               ].map((feat, i) => (
                 <div key={i} className="why-feat-row">
@@ -578,7 +578,7 @@ const Home = () => {
                     name="quote" 
                     rows="4" 
                     required 
-                    placeholder="Describe your experience with our plastic machinery sales, service or support..." 
+                    placeholder="Describe your experience with our plastic machinery sales, products or support..." 
                     value={reviewForm.quote} 
                     onChange={handleReviewChange}
                     style={{ padding: '0.75rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-primary)', background: 'var(--bg-primary)', color: 'var(--text-primary)', resize: 'vertical' }}

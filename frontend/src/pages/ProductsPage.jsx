@@ -53,7 +53,7 @@ const ProductsPage = () => {
           <h1 className="products-hero-title">Plastic Machinery &amp; Products</h1>
           <p className="products-hero-desc">
             Browse our range of plastic extruders, injection moulding machines, auxiliary equipment, spare parts,
-            and raw material — all available for sale, service, and AMC.
+            and raw material — all available for sale and AMC.
           </p>
 
           {/* Search Bar */}

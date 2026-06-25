@@ -14,7 +14,7 @@ const machines = [
       'Temperature Monitors: Multi-channel infrared thermal trackers',
       'Machine Covered: Single & twin screw extruders, heavy hydraulic presses'
     ],
-    desc: 'The heart of our mechanical engineering facility — a heavy-duty workshop equipped with specialized tools, cranes, and diagnostic equipment to rebuild, repair, and test pre-owned plastic machinery.',
+    desc: 'The heart of our mechanical engineering facility — a heavy-duty workshop equipped with specialized tools, cranes, and diagnostic equipment to overhaul and test pre-owned plastic machinery.',,
     icon: Wrench
   },
   {
@@ -66,7 +66,7 @@ const machines = [
       'Verification Standard: Conformance to Indian & ISO machinery safety codes',
       'Audit Release: Comprehensive 15-Point QC certificate generated per machine'
     ],
-    desc: 'Every serviced or refurbished machine undergoes intense pressure and load trials. This ensures that when the machine arrives at your factory floor, it starts up smoothly with zero commissioning delays.',
+    desc: 'Every machine undergoes intense pressure and load trials before delivery. This ensures that when the machine arrives at your factory floor, it starts up smoothly with zero commissioning delays.',,
     icon: ShieldCheck
   }
 ];
@@ -103,7 +103,7 @@ const InfrastructurePage = () => {
           </div>
           <div className="overview-stat">
             <span className="ov-number">1,500+</span>
-            <span className="ov-label">Machines Repaired &amp; Serviced</span>
+            <span className="ov-label">Machines Sold &amp; Delivered</span>
           </div>
           <div className="overview-stat">
             <span className="ov-number">100%</span>
@@ -159,7 +159,7 @@ const InfrastructurePage = () => {
             <span className="section-subtitle">Quality Assurance</span>
             <h2 className="section-title">Zero-Defect 5-Stage Machinery Validation</h2>
             <p className="section-desc">
-              Every serviced or sold machine passes through a strict 5-stage diagnostic and run-test protocol before shipping to the client — ensuring maximum commissioning speed.
+              Every sold machine passes through a strict 5-stage diagnostic and run-test protocol before shipping to the client — ensuring maximum commissioning speed.
             </p>
           </div>
           <div className="qc-stages-timeline">
