@@ -181,7 +181,7 @@ const Home = () => {
   return (
     <div className="home-page-wrapper">
       <SEO 
-        title="MD TechKanpur | Premium Polymer Masterbatch Manufacturer"
+        title="MD TechKanpur | Premium Polymer Masterbatch R&D"
         description="Your trusted partner for Plastic Color Masterbatch, Plastic Compounds, Engineering Compounds, and Additives in Kanpur. Extruders, Injection Moulding, and Auxiliary Equipment."
       />
 

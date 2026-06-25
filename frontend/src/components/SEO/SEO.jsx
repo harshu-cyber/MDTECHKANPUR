@@ -24,8 +24,8 @@ const SEO = ({ title, description, name, type }) => {
 };
 
 SEO.defaultProps = {
-  title: 'MD TechKanpur | Premium Polymer Masterbatch Manufacturer',
-  description: 'State-of-the-art manufacturer of high-performance masterbatches and custom additive compounds. Exported to 30+ countries worldwide.',
+  title: 'MD TechKanpur | Premium Polymer Masterbatch R&D',
+  description: 'State-of-the-art R&D of high-performance masterbatches and custom additive compounds.',
   name: 'MD TechKanpur',
   type: 'website'
 };
