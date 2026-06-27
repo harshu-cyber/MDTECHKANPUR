@@ -147,19 +147,12 @@ const Footer = () => {
             <span className="footer-maker">
               Made with <span role="img" aria-label="heart">❤️</span> by Brajwasi's Coders
             </span>
-            {/* Inline SVG circular BC logo */}
-            <span className="footer-bc-logo" title="Brajwasi's Coders">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="22" height="22">
-                <circle cx="18" cy="18" r="18" fill="#0d0d1a" />
-                <circle cx="18" cy="18" r="17" fill="none" stroke="#c9a227" strokeWidth="0.8" />
-                {/* B letter */}
-                <text x="6" y="23" fontFamily="Georgia, serif" fontSize="14" fontWeight="bold" fill="#4a8fff">B</text>
-                {/* code symbol */}
-                <text x="14.5" y="21" fontFamily="monospace" fontSize="7" fill="#c9a227">&lt;/&gt;</text>
-                {/* C letter */}
-                <text x="24" y="23" fontFamily="Georgia, serif" fontSize="14" fontWeight="bold" fill="#c9a227">C</text>
-              </svg>
-            </span>
+            <img
+              src="/brajwasi-coders-logo.png"
+              alt="Brajwasi's Coders Logo"
+              className="footer-bc-logo-img"
+              title="Brajwasi's Coders"
+            />
           </div>
         </div>
       </div>
